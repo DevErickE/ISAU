@@ -242,38 +242,134 @@ function processSale() {
     }
 }
 
-// Função para gerar relatório em formato .txt
-function generateReport(type) {
-    let data = [];
-    let fileName = '';
+// Dados fictícios para clientes, produtos e fornecedores
+const clientes = [];
+const produtos = [];
+const fornecedores = [];
 
-    if (type === 'clientes') {
-        data = clients;
-        fileName = 'relatorio_clientes.txt';
-    } else if (type === 'produtos') {
-        data = products;
-        fileName = 'relatorio_produtos.txt';
-    } else if (type === 'fornecedores') {
-        data = suppliers;
-        fileName = 'relatorio_fornecedores.txt';
-    }
-
-    let reportContent = '';
-
-    if (data.length > 0) {
-        reportContent = data.map((item, index) => {
-            return `${index + 1}. ${JSON.stringify(item, null, 2)}`;
-        }).join('\n\n');
-    } else {
-        reportContent = `Nenhum ${type.slice(0, -1)} cadastrado.`;
-    }
-
-    // Gera o arquivo txt
-    const blob = new Blob([reportContent], { type: 'text/plain;charset=utf-8' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = fileName;
-    link.click();
+// Função para salvar cliente
+function saveClient() {
+    const nome = document.getElementById('cliente-nome').value;
+    const rg = document.getElementById('cliente-rg').value;
+    const cpf = document.getElementById('cliente-cpf').value;
+    const dataNascimento = document.getElementById('cliente-data-nascimento').value;
+    const endereco = document.getElementById('cliente-endereco').value;
+    
+    clientes.push({ nome, rg, cpf, dataNascimento, endereco });
+    alert('Cliente cadastrado com sucesso!');
+    document.getElementById('cadastro-cliente').reset();
 }
 
+// Função para salvar fornecedor
+function saveSupplier() {
+    const cnpj = document.getElementById('fornecedor-cnpj').value;
+    const nome = document.getElementById('fornecedor-nome').value;
+    const endereco = document.getElementById('fornecedor-endereco').value;
+    
+    fornecedores.push({ cnpj, nome, endereco });
+    alert('Fornecedor cadastrado com sucesso!');
+    document.getElementById('cadastro-fornecedor').reset();
+}
 
+// Função para salvar produto
+function saveProduct() {
+    const codigo = document.getElementById('produto-codigo').value;
+    const nome = document.getElementById('produto-nome').value;
+    const descricao = document.getElementById('produto-descricao').value;
+    const valor = document.getElementById('produto-valor').value;
+    
+    produtos.push({ codigo, nome, descricao, valor });
+    alert('Produto cadastrado com sucesso!');
+    document.getElementById('cadastro-produto').reset();
+}
+
+// Função para gerar relatório em TXT
+function generateReport(type) {
+    let data = '';
+    let filename = '';
+
+    switch(type) {
+        case 'clientes':
+            if (clientes.length === 0) {
+                alert('Nenhum cliente cadastrado para gerar o relatório.');
+                return;
+            }
+            data = clientes.map(c => `Nome: ${c.nome}\nRG: ${c.rg}\nCPF: ${c.cpf}\nData de Nascimento: ${c.dataNascimento}\nEndereço: ${c.endereco}`).join('\n\n');
+            filename = 'relatorio_clientes.txt';
+            break;
+        case 'produtos':
+            if (produtos.length === 0) {
+                alert('Nenhum produto cadastrado para gerar o relatório.');
+                return;
+            }
+            data = produtos.map(p => `Código: ${p.codigo}\nNome: ${p.nome}\nDescrição: ${p.descricao}\nValor: R$ ${p.valor}`).join('\n\n');
+            filename = 'relatorio_produtos.txt';
+            break;
+        case 'fornecedores':
+            if (fornecedores.length === 0) {
+                alert('Nenhum fornecedor cadastrado para gerar o relatório.');
+                return;
+            }
+            data = fornecedores.map(f => `CNPJ: ${f.cnpj}\nNome: ${f.nome}\nEndereço: ${f.endereco}`).join('\n\n');
+            filename = 'relatorio_fornecedores.txt';
+            break;
+    }
+
+    const blob = new Blob([data], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
+
+// Função para mostrar seções
+function showSection(sectionId) {
+    document.querySelectorAll('.section').forEach(section => {
+        section.style.display = section.id === sectionId ? 'block' : 'none';
+    });
+}
+
+// Função para mostrar formulários
+function showForm(formId) {
+    document.querySelectorAll('.form').forEach(form => {
+        form.style.display = form.id === formId ? 'block' : 'none';
+    });
+}
+
+// Função para mostrar formulários de relatório
+function showReportForm(formId) {
+    document.querySelectorAll('.report-form').forEach(form => {
+        form.style.display = form.id === `report-${formId}` ? 'block' : 'none';
+    });
+}
+
+// Função para processar a venda
+function processSale() {
+    const produto = document.getElementById('venda-produto').value;
+    const quantidade = document.getElementById('venda-quantidade').value;
+    
+    // Aqui você pode implementar a lógica de processamento da venda
+    document.getElementById('venda-status').innerText = `Venda realizada: ${quantidade} unidade(s) de ${produto}.`;
+}
+
+// Função de logout
+function logout() {
+    // Aqui você pode implementar a lógica de logout
+    alert('Você foi desconectado.');
+}
+
+// Função para mostrar seções
+function showLogin() {
+    document.getElementById('login-section').style.display = 'block';
+    document.getElementById('register-section').style.display = 'none';
+}
+
+// Função para mostrar a tela de registro
+function showRegister() {
+    document.getElementById('login-section').style.display = 'none';
+    document.getElementById('register-section').style.display = 'block';
+}
