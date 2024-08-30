@@ -162,37 +162,70 @@ function updateProductDropdown() {
     });
 }
 
-// Funções para listar dados
+// Função para listar dados
 function showList(type) {
     let resultsDiv = document.getElementById('listar-results');
     resultsDiv.innerHTML = '';
 
     let data;
+    let headers;
+    let title;
+    
     switch (type) {
         case 'clientes':
             data = clients;
+            headers = ['Nome', 'RG', 'CPF', 'Data de Nascimento', 'Endereço'];
+            title = 'Clientes';
             break;
         case 'fornecedores':
             data = suppliers;
+            headers = ['CNPJ', 'Nome', 'Endereço'];
+            title = 'Fornecedores';
             break;
         case 'produtos':
             data = products;
+            headers = ['Código', 'Nome', 'Descrição', 'Valor'];
+            title = 'Produtos';
             break;
+        default:
+            resultsDiv.innerHTML = '<p>Tipo de listagem desconhecido.</p>';
+            return;
     }
 
     if (data.length === 0) {
-        resultsDiv.innerHTML = `<p>Nenhum ${type} cadastrado.</p>`;
+        resultsDiv.innerHTML = `<p class="no-data">Nenhum ${type} cadastrado.</p>`;
         return;
     }
 
-    let list = document.createElement('ul');
-    data.forEach(item => {
-        let listItem = document.createElement('li');
-        listItem.textContent = JSON.stringify(item);
-        list.appendChild(listItem);
-    });
+    // Criar tabela
+    let table = document.createElement('table');
+    table.className = 'table';
 
-    resultsDiv.appendChild(list);
+    // Criar cabeçalho
+    let thead = document.createElement('thead');
+    let headerRow = document.createElement('tr');
+    headers.forEach(header => {
+        let th = document.createElement('th');
+        th.textContent = header;
+        headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Criar corpo da tabela
+    let tbody = document.createElement('tbody');
+    data.forEach(item => {
+        let row = document.createElement('tr');
+        headers.forEach(header => {
+            let td = document.createElement('td');
+            td.textContent = item[header.toLowerCase()] || 'N/A'; // Adapte a chave conforme os dados
+            row.appendChild(td);
+        });
+        tbody.appendChild(row);
+    });
+    table.appendChild(tbody);
+
+    resultsDiv.appendChild(table);
 }
 
 // Função para processar a venda
@@ -208,3 +241,56 @@ function processSale() {
         document.getElementById('venda-status').textContent = 'Produto não encontrado!';
     }
 }
+
+// Função para gerar relatório em formato .txt
+function generateReport(type) {
+    let data;
+    let headers;
+    let title;
+    
+    switch (type) {
+        case 'clientes':
+            data = clients;
+            headers = ['Nome', 'RG', 'CPF', 'Data de Nascimento', 'Endereço'];
+            title = 'Relatório de Clientes';
+            break;
+        case 'fornecedores':
+            data = suppliers;
+            headers = ['CNPJ', 'Nome', 'Endereço'];
+            title = 'Relatório de Fornecedores';
+            break;
+        case 'produtos':
+            data = products;
+            headers = ['Código', 'Nome', 'Descrição', 'Valor'];
+            title = 'Relatório de Produtos';
+            break;
+        default:
+            alert('Tipo de relatório desconhecido.');
+            return;
+    }
+
+    if (data.length === 0) {
+        alert(`Nenhum ${type} cadastrado para gerar o relatório.`);
+        return;
+    }
+
+    // Criar o conteúdo do relatório
+    let reportContent = `${title}\n\n`;
+    reportContent += headers.join('\t') + '\n'; // Cabeçalhos separados por tabulação
+    data.forEach(item => {
+        let row = headers.map(header => item[header.toLowerCase()] || 'N/A').join('\t');
+        reportContent += row + '\n';
+    });
+
+    // Criar o blob com o conteúdo do relatório
+    const blob = new Blob([reportContent], { type: 'text/plain;charset=utf-8' });
+
+    // Criar link para download
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${title.replace(/\s+/g, '_')}.txt`; // Nome do arquivo com espaços substituídos por _
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
