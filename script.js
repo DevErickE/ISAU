@@ -1,375 +1,258 @@
-// Dados fictícios para login e registro
-const users = [
-    {
-        username: 'admin',
-        password: 'admin123'
-    }
-];
+// Array para armazenar os dados
+const users = [];
+const clients = [];
+const suppliers = [];
+const products = [];
+
+// Função para exibir a seção de login
+function showLogin() {
+    hideMessages();
+    document.getElementById('login-section').style.display = 'block';
+    document.getElementById('register-section').style.display = 'none';
+    document.getElementById('main-section').style.display = 'none';
+}
 
 // Função para exibir a seção de registro
 function showRegister() {
-    hideMessages(); // Esconde as mensagens
+    hideMessages();
     document.getElementById('login-section').style.display = 'none';
     document.getElementById('register-section').style.display = 'block';
 }
 
-// Função para exibir a seção de login
-function showLogin() {
-    hideMessages(); // Esconde as mensagens
-    document.getElementById('register-section').style.display = 'none';
-    document.getElementById('login-section').style.display = 'block';
-}
-
-// Função para esconder todas as mensagens de erro e sucesso
+// Função para esconder as mensagens
 function hideMessages() {
-    const messages = document.querySelectorAll('.message');
-    messages.forEach(message => {
-        message.style.display = 'none';
+    const messageElements = document.querySelectorAll('.message');
+    messageElements.forEach(element => {
+        element.style.display = 'none';
     });
 }
 
-// Função para exibir seções
+// Função para exibir a seção principal
+function showMain() {
+    hideMessages();
+    document.getElementById('login-section').style.display = 'none';
+    document.getElementById('register-section').style.display = 'none';
+    document.getElementById('main-section').style.display = 'block';
+}
+
+// Função para exibir uma seção específica
 function showSection(sectionId) {
-    hideMessages(); // Esconde as mensagens
-    const sections = document.querySelectorAll('#main-section .section');
+    const sections = document.querySelectorAll('.section');
     sections.forEach(section => section.style.display = 'none');
     document.getElementById(sectionId).style.display = 'block';
 }
 
-// Função para exibir formulário
+// Função para mostrar um formulário específico
 function showForm(formId) {
-    hideMessages(); // Esconde as mensagens
     const forms = document.querySelectorAll('.form');
     forms.forEach(form => form.style.display = 'none');
     document.getElementById(formId).style.display = 'block';
 }
 
-// Função de logout
-function logout() {
-    hideMessages(); // Esconde as mensagens
-    document.getElementById('main-section').style.display = 'none';
-    document.getElementById('login-section').style.display = 'block';
+// Função para mostrar uma mensagem
+function showMessage(elementId, message, isError) {
+    hideMessages(); // Esconde todas as mensagens antes de exibir a nova
+    const messageElement = document.getElementById(elementId);
+    messageElement.textContent = message;
+    messageElement.style.display = 'block';
+    messageElement.className = isError ? 'message error' : 'message success'; // Aplica a classe correta
 }
 
-// Função para manipular o login
-document.getElementById('login-form').addEventListener('submit', function(event) {
-    event.preventDefault();
 
+// Função para o login de usuário
+document.getElementById('login-form').addEventListener('submit', function (event) {
+    event.preventDefault();
     const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
-    const loginError = document.getElementById('login-error');
-
-    const user = users.find(user => user.username === username && user.password === password);
-
-    hideMessages(); // Esconde as mensagens
-
+    const user = users.find(u => u.username === username && u.password === password);
+    
     if (user) {
-        document.getElementById('login-section').style.display = 'none';
-        document.getElementById('main-section').style.display = 'block';
+        showMain();
     } else {
-        loginError.textContent = 'Usuário ou senha incorretos';
-        loginError.className = 'message error';
-        loginError.style.display = 'block';
+        showMessage('login-error', 'Usuário ou senha incorretos', true);
     }
 });
 
-// Função para manipular o registro
-document.getElementById('register-form').addEventListener('submit', function(event) {
+// Função para registro de novo usuário
+document.getElementById('register-form').addEventListener('submit', function (event) {
     event.preventDefault();
-
     const username = document.getElementById('register-username').value;
     const password = document.getElementById('register-password').value;
     const confirmPassword = document.getElementById('register-confirm-password').value;
-    const registerError = document.getElementById('register-error');
-    const registerSuccess = document.getElementById('register-success');
 
-    hideMessages(); // Esconde as mensagens
-
-    if (password !== confirmPassword) {
-        registerError.textContent = 'As senhas não correspondem';
-        registerError.className = 'message error';
-        registerError.style.display = 'block';
-        return;
-    }
-
-    if (users.find(user => user.username === username)) {
-        registerError.textContent = 'Usuário já existe';
-        registerError.className = 'message error';
-        registerError.style.display = 'block';
-        return;
-    }
-
-    users.push({ username, password });
-    registerSuccess.textContent = 'Conta criada com sucesso!';
-    registerSuccess.className = 'message success';
-    registerSuccess.style.display = 'block';
-    showLogin();
-});
-
-// Funções fictícias para salvar dados
-function saveClient() {
-    const client = {
-        nome: document.getElementById('cliente-nome').value,
-        rg: document.getElementById('cliente-rg').value,
-        cpf: document.getElementById('cliente-cpf').value,
-        dataNascimento: document.getElementById('cliente-data-nascimento').value,
-        endereco: document.getElementById('cliente-endereco').value
-    };
-    clients.push(client);
-    alert('Cliente salvo!');
-    document.getElementById('cadastro-cliente').reset();
-}
-
-function saveSupplier() {
-    const supplier = {
-        cnpj: document.getElementById('fornecedor-cnpj').value,
-        nome: document.getElementById('fornecedor-nome').value,
-        endereco: document.getElementById('fornecedor-endereco').value
-    };
-    suppliers.push(supplier);
-    alert('Fornecedor salvo!');
-    document.getElementById('cadastro-fornecedor').reset();
-}
-
-function saveProduct() {
-    const product = {
-        codigo: document.getElementById('produto-codigo').value,
-        nome: document.getElementById('produto-nome').value,
-        descricao: document.getElementById('produto-descricao').value,
-        valor: document.getElementById('produto-valor').value
-    };
-    products.push(product);
-    alert('Produto salvo!');
-    document.getElementById('cadastro-produto').reset();
-    updateProductDropdown(); // Atualiza a lista de produtos na frente de caixa
-}
-
-// Dados fictícios para clientes, fornecedores e produtos
-const clients = [];
-const suppliers = [];
-const products = [];
-
-// Função para atualizar a lista de produtos na frente de caixa
-function updateProductDropdown() {
-    const productSelect = document.getElementById('venda-produto');
-    productSelect.innerHTML = ''; // Limpa a lista existente
-
-    products.forEach(product => {
-        let option = document.createElement('option');
-        option.value = product.codigo; // Pode ser um identificador único
-        option.textContent = `${product.nome} - R$ ${product.valor}`;
-        productSelect.appendChild(option);
-    });
-}
-
-// Função para listar dados
-function showList(type) {
-    let resultsDiv = document.getElementById('listar-results');
-    resultsDiv.innerHTML = '';
-
-    let data;
-    let headers;
-    let title;
-    
-    switch (type) {
-        case 'clientes':
-            data = clients;
-            headers = ['Nome', 'RG', 'CPF', 'Data de Nascimento', 'Endereço'];
-            title = 'Clientes';
-            break;
-        case 'fornecedores':
-            data = suppliers;
-            headers = ['CNPJ', 'Nome', 'Endereço'];
-            title = 'Fornecedores';
-            break;
-        case 'produtos':
-            data = products;
-            headers = ['Código', 'Nome', 'Descrição', 'Valor'];
-            title = 'Produtos';
-            break;
-        default:
-            resultsDiv.innerHTML = '<p>Tipo de listagem desconhecido.</p>';
-            return;
-    }
-
-    if (data.length === 0) {
-        resultsDiv.innerHTML = `<p class="no-data">Nenhum ${type} cadastrado.</p>`;
-        return;
-    }
-
-    // Criar tabela
-    let table = document.createElement('table');
-    table.className = 'table';
-
-    // Criar cabeçalho
-    let thead = document.createElement('thead');
-    let headerRow = document.createElement('tr');
-    headers.forEach(header => {
-        let th = document.createElement('th');
-        th.textContent = header;
-        headerRow.appendChild(th);
-    });
-    thead.appendChild(headerRow);
-    table.appendChild(thead);
-
-    // Criar corpo da tabela
-    let tbody = document.createElement('tbody');
-    data.forEach(item => {
-        let row = document.createElement('tr');
-        headers.forEach(header => {
-            let td = document.createElement('td');
-            td.textContent = item[header.toLowerCase()] || 'N/A'; // Adapte a chave conforme os dados
-            row.appendChild(td);
-        });
-        tbody.appendChild(row);
-    });
-    table.appendChild(tbody);
-
-    resultsDiv.appendChild(table);
-}
-
-// Função para processar a venda
-function processSale() {
-    const productCode = document.getElementById('venda-produto').value;
-    const quantity = document.getElementById('venda-quantidade').value;
-    const product = products.find(p => p.codigo == productCode);
-
-    if (product) {
-        const total = product.valor * quantity;
-        document.getElementById('venda-status').textContent = `Venda realizada: ${quantity}x ${product.nome} - Total: R$ ${total.toFixed(2)}`;
+    if (password === confirmPassword) {
+        if (users.find(u => u.username === username)) {
+            showMessage('register-error', 'Conta existente', true);
+        } else {
+            users.push({ username, password });
+            showMessage('register-success', 'Conta criada com sucesso', false);
+            setTimeout(showLogin, 2000); // Voltar ao login após 2 segundos
+        }
     } else {
-        document.getElementById('venda-status').textContent = 'Produto não encontrado!';
+        showMessage('register-error', 'Senhas não coincidem', true);
     }
-}
-
-// Dados fictícios para clientes, produtos e fornecedores
-const clientes = [];
-const produtos = [];
-const fornecedores = [];
+});
 
 // Função para salvar cliente
 function saveClient() {
-    const nome = document.getElementById('cliente-nome').value;
+    const name = document.getElementById('cliente-nome').value;
     const rg = document.getElementById('cliente-rg').value;
     const cpf = document.getElementById('cliente-cpf').value;
-    const dataNascimento = document.getElementById('cliente-data-nascimento').value;
-    const endereco = document.getElementById('cliente-endereco').value;
+    const birthDate = document.getElementById('cliente-data-nascimento').value;
+    const address = document.getElementById('cliente-endereco').value;
     
-    clientes.push({ nome, rg, cpf, dataNascimento, endereco });
+    clients.push({ name, rg, cpf, birthDate, address });
+    document.getElementById('cliente-nome').value = '';
+    document.getElementById('cliente-rg').value = '';
+    document.getElementById('cliente-cpf').value = '';
+    document.getElementById('cliente-data-nascimento').value = '';
+    document.getElementById('cliente-endereco').value = '';
+    
     alert('Cliente cadastrado com sucesso!');
-    document.getElementById('cadastro-cliente').reset();
 }
 
 // Função para salvar fornecedor
 function saveSupplier() {
     const cnpj = document.getElementById('fornecedor-cnpj').value;
-    const nome = document.getElementById('fornecedor-nome').value;
-    const endereco = document.getElementById('fornecedor-endereco').value;
+    const name = document.getElementById('fornecedor-nome').value;
+    const address = document.getElementById('fornecedor-endereco').value;
     
-    fornecedores.push({ cnpj, nome, endereco });
+    suppliers.push({ cnpj, name, address });
+    document.getElementById('fornecedor-cnpj').value = '';
+    document.getElementById('fornecedor-nome').value = '';
+    document.getElementById('fornecedor-endereco').value = '';
+    
     alert('Fornecedor cadastrado com sucesso!');
-    document.getElementById('cadastro-fornecedor').reset();
 }
 
 // Função para salvar produto
 function saveProduct() {
-    const codigo = document.getElementById('produto-codigo').value;
-    const nome = document.getElementById('produto-nome').value;
-    const descricao = document.getElementById('produto-descricao').value;
-    const valor = document.getElementById('produto-valor').value;
+    const code = document.getElementById('produto-codigo').value;
+    const name = document.getElementById('produto-nome').value;
+    const description = document.getElementById('produto-descricao').value;
+    const value = parseFloat(document.getElementById('produto-valor').value);
     
-    produtos.push({ codigo, nome, descricao, valor });
+    products.push({ code, name, description, value });
+    document.getElementById('produto-codigo').value = '';
+    document.getElementById('produto-nome').value = '';
+    document.getElementById('produto-descricao').value = '';
+    document.getElementById('produto-valor').value = '';
+    
+    updateProductDropdown();
     alert('Produto cadastrado com sucesso!');
-    document.getElementById('cadastro-produto').reset();
 }
 
-// Função para gerar relatório em TXT
-function generateReport(type) {
-    let data = '';
-    let filename = '';
+// Função para atualizar o dropdown de produtos
+function updateProductDropdown() {
+    const dropdown = document.getElementById('venda-produto');
+    dropdown.innerHTML = '<option value="" disabled selected>Selecione um produto</option>';
+    
+    products.forEach(product => {
+        const option = document.createElement('option');
+        option.value = product.code;
+        option.textContent = `${product.name} - R$${product.value.toFixed(2)}`;
+        dropdown.appendChild(option);
+    });
+}
 
-    switch(type) {
+// Função para processar venda
+function processSale() {
+    const productCode = document.getElementById('venda-produto').value;
+    const quantity = parseInt(document.getElementById('venda-quantidade').value);
+    
+    const product = products.find(p => p.code === productCode);
+    if (product) {
+        const total = product.value * quantity;
+        document.getElementById('venda-status').textContent = `Venda realizada: ${product.name} x${quantity} - Total: R$${total.toFixed(2)}`;
+    } else {
+        document.getElementById('venda-status').textContent = 'Produto não encontrado';
+    }
+}
+
+// Função para listar dados
+function showList(type) {
+    const resultsDiv = document.getElementById('listar-results');
+    resultsDiv.innerHTML = '';
+
+    let data;
+    switch (type) {
         case 'clientes':
-            if (clientes.length === 0) {
-                alert('Nenhum cliente cadastrado para gerar o relatório.');
-                return;
-            }
-            data = clientes.map(c => `Nome: ${c.nome}\nRG: ${c.rg}\nCPF: ${c.cpf}\nData de Nascimento: ${c.dataNascimento}\nEndereço: ${c.endereco}`).join('\n\n');
-            filename = 'relatorio_clientes.txt';
-            break;
-        case 'produtos':
-            if (produtos.length === 0) {
-                alert('Nenhum produto cadastrado para gerar o relatório.');
-                return;
-            }
-            data = produtos.map(p => `Código: ${p.codigo}\nNome: ${p.nome}\nDescrição: ${p.descricao}\nValor: R$ ${p.valor}`).join('\n\n');
-            filename = 'relatorio_produtos.txt';
+            data = clients;
             break;
         case 'fornecedores':
-            if (fornecedores.length === 0) {
-                alert('Nenhum fornecedor cadastrado para gerar o relatório.');
-                return;
-            }
-            data = fornecedores.map(f => `CNPJ: ${f.cnpj}\nNome: ${f.nome}\nEndereço: ${f.endereco}`).join('\n\n');
-            filename = 'relatorio_fornecedores.txt';
+            data = suppliers;
             break;
+        case 'produtos':
+            data = products;
+            break;
+        default:
+            data = [];
     }
 
-    const blob = new Blob([data], { type: 'text/plain;charset=utf-8' });
+    if (data.length === 0) {
+        resultsDiv.innerHTML = '<p>Nenhum item encontrado</p>';
+    } else {
+        const table = document.createElement('table');
+        const header = document.createElement('thead');
+        const headerRow = document.createElement('tr');
+
+        Object.keys(data[0]).forEach(key => {
+            const th = document.createElement('th');
+            th.textContent = key.charAt(0).toUpperCase() + key.slice(1);
+            headerRow.appendChild(th);
+        });
+        header.appendChild(headerRow);
+        table.appendChild(header);
+
+        const body = document.createElement('tbody');
+        data.forEach(item => {
+            const row = document.createElement('tr');
+            Object.values(item).forEach(value => {
+                const td = document.createElement('td');
+                td.textContent = value;
+                row.appendChild(td);
+            });
+            body.appendChild(row);
+        });
+        table.appendChild(body);
+
+        resultsDiv.appendChild(table);
+    }
+}
+
+// Função para gerar relatório
+function generateReport(type) {
+    const data = {
+        clientes: clients,
+        fornecedores: suppliers,
+        produtos: products
+    }[type];
+
+    if (data.length === 0) {
+        alert('Nenhum dado encontrado para gerar o relatório.');
+        return;
+    }
+
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
+    a.download = `${type}-report.txt`;
     a.click();
-    document.body.removeChild(a);
     URL.revokeObjectURL(url);
 }
 
-// Função para mostrar seções
-function showSection(sectionId) {
-    document.querySelectorAll('.section').forEach(section => {
-        section.style.display = section.id === sectionId ? 'block' : 'none';
-    });
+// Função para mostrar o formulário do relatório selecionado
+function showReportForm(type) {
+    document.querySelectorAll('.report-form').forEach(form => form.style.display = 'none');
+    document.getElementById(`report-${type}`).style.display = 'block';
 }
 
-// Função para mostrar formulários
-function showForm(formId) {
-    document.querySelectorAll('.form').forEach(form => {
-        form.style.display = form.id === formId ? 'block' : 'none';
-    });
-}
-
-// Função para mostrar formulários de relatório
-function showReportForm(formId) {
-    document.querySelectorAll('.report-form').forEach(form => {
-        form.style.display = form.id === `report-${formId}` ? 'block' : 'none';
-    });
-}
-
-// Função para processar a venda
-function processSale() {
-    const produto = document.getElementById('venda-produto').value;
-    const quantidade = document.getElementById('venda-quantidade').value;
-    
-    // Aqui você pode implementar a lógica de processamento da venda
-    document.getElementById('venda-status').innerText = `Venda realizada: ${quantidade} unidade(s) de ${produto}.`;
-}
-
-// Função de logout
+// Função para logout
 function logout() {
-    // Aqui você pode implementar a lógica de logout
-    alert('Você foi desconectado.');
+    document.getElementById('main-section').style.display = 'none';
+    showLogin();
 }
 
-// Função para mostrar seções
-function showLogin() {
-    document.getElementById('login-section').style.display = 'block';
-    document.getElementById('register-section').style.display = 'none';
-}
-
-// Função para mostrar a tela de registro
-function showRegister() {
-    document.getElementById('login-section').style.display = 'none';
-    document.getElementById('register-section').style.display = 'block';
-}
+// Atualiza o dropdown de produtos ao carregar a página
+document.addEventListener('DOMContentLoaded', updateProductDropdown);
