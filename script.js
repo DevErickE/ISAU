@@ -244,53 +244,36 @@ function processSale() {
 
 // Função para gerar relatório em formato .txt
 function generateReport(type) {
-    let data;
-    let headers;
-    let title;
-    
-    switch (type) {
-        case 'clientes':
-            data = clients;
-            headers = ['Nome', 'RG', 'CPF', 'Data de Nascimento', 'Endereço'];
-            title = 'Relatório de Clientes';
-            break;
-        case 'fornecedores':
-            data = suppliers;
-            headers = ['CNPJ', 'Nome', 'Endereço'];
-            title = 'Relatório de Fornecedores';
-            break;
-        case 'produtos':
-            data = products;
-            headers = ['Código', 'Nome', 'Descrição', 'Valor'];
-            title = 'Relatório de Produtos';
-            break;
-        default:
-            alert('Tipo de relatório desconhecido.');
-            return;
+    let data = [];
+    let fileName = '';
+
+    if (type === 'clientes') {
+        data = clients;
+        fileName = 'relatorio_clientes.txt';
+    } else if (type === 'produtos') {
+        data = products;
+        fileName = 'relatorio_produtos.txt';
+    } else if (type === 'fornecedores') {
+        data = suppliers;
+        fileName = 'relatorio_fornecedores.txt';
     }
 
-    if (data.length === 0) {
-        alert(`Nenhum ${type} cadastrado para gerar o relatório.`);
-        return;
+    let reportContent = '';
+
+    if (data.length > 0) {
+        reportContent = data.map((item, index) => {
+            return `${index + 1}. ${JSON.stringify(item, null, 2)}`;
+        }).join('\n\n');
+    } else {
+        reportContent = `Nenhum ${type.slice(0, -1)} cadastrado.`;
     }
 
-    // Criar o conteúdo do relatório
-    let reportContent = `${title}\n\n`;
-    reportContent += headers.join('\t') + '\n'; // Cabeçalhos separados por tabulação
-    data.forEach(item => {
-        let row = headers.map(header => item[header.toLowerCase()] || 'N/A').join('\t');
-        reportContent += row + '\n';
-    });
-
-    // Criar o blob com o conteúdo do relatório
+    // Gera o arquivo txt
     const blob = new Blob([reportContent], { type: 'text/plain;charset=utf-8' });
-
-    // Criar link para download
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = `${title.replace(/\s+/g, '_')}.txt`; // Nome do arquivo com espaços substituídos por _
-    document.body.appendChild(link);
+    link.download = fileName;
     link.click();
-    document.body.removeChild(link);
 }
+
 
