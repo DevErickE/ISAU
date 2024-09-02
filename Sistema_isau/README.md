@@ -2,10 +2,6 @@
 
 Bem-vindo ao repositório do **Sistema de Gestão ISAU**! Este projeto é uma aplicação web desenvolvida em HTML, CSS e JavaScript para gerenciar clientes, fornecedores, produtos, e realizar vendas. 
 
-<p align="center">
-  <img src="https://devericke.github.io/ISAU/" alt="Sistema de Gestão ISAU Preview">
-</p>
-
 ## 🎯 Objetivo
 
 O objetivo deste projeto é fornecer uma ferramenta simples e eficiente para a gestão de cadastros e vendas, permitindo que os usuários realizem operações de cadastro de clientes, fornecedores, e produtos, além de gerar relatórios e processar vendas.
