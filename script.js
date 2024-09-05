@@ -37,27 +37,24 @@ function showMain() {
 
 // Função para exibir uma seção específica
 function showSection(sectionId) {
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => section.style.display = 'none');
+    document.querySelectorAll('.section').forEach(section => section.style.display = 'none');
     document.getElementById(sectionId).style.display = 'block';
 }
 
 // Função para mostrar um formulário específico
 function showForm(formId) {
-    const forms = document.querySelectorAll('.form');
-    forms.forEach(form => form.style.display = 'none');
+    document.querySelectorAll('.form').forEach(form => form.style.display = 'none');
     document.getElementById(formId).style.display = 'block';
 }
 
 // Função para mostrar uma mensagem
 function showMessage(elementId, message, isError) {
-    hideMessages(); // Esconde todas as mensagens antes de exibir a nova
+    hideMessages();
     const messageElement = document.getElementById(elementId);
     messageElement.textContent = message;
     messageElement.style.display = 'block';
-    messageElement.className = isError ? 'message error' : 'message success'; // Aplica a classe correta
+    messageElement.className = isError ? 'message error' : 'message success';
 }
-
 
 // Função para o login de usuário
 document.getElementById('login-form').addEventListener('submit', function (event) {
@@ -108,7 +105,7 @@ function saveClient() {
     document.getElementById('cliente-data-nascimento').value = '';
     document.getElementById('cliente-endereco').value = '';
     
-    alert('Cliente cadastrado com sucesso!');
+    showMessage('client-success', 'Cliente cadastrado com sucesso', false);
 }
 
 // Função para salvar fornecedor
@@ -122,7 +119,7 @@ function saveSupplier() {
     document.getElementById('fornecedor-nome').value = '';
     document.getElementById('fornecedor-endereco').value = '';
     
-    alert('Fornecedor cadastrado com sucesso!');
+    showMessage('supplier-success', 'Fornecedor cadastrado com sucesso', false);
 }
 
 // Função para salvar produto
@@ -139,7 +136,7 @@ function saveProduct() {
     document.getElementById('produto-valor').value = '';
     
     updateProductDropdown();
-    alert('Produto cadastrado com sucesso!');
+    showMessage('product-success', 'Produto cadastrado com sucesso', false);
 }
 
 // Função para atualizar o dropdown de produtos
