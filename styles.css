@@ -210,24 +210,21 @@ footer p {
 
 /* Estilo para todas as mensagens */
 .message {
-    display: none; /* Inicialmente escondido */
+    display: none;
     padding: 10px;
+    margin-bottom: 10px;
     border-radius: 5px;
-    color: #fff; /* Texto branco */
-    margin-top: 10px;
-    text-align: center;
+    font-size: 16px;
 }
 
-/* Estilo para mensagens de erro */
 .message.error {
-    background-color: #c62828; /* Vermelho escuro */
-    border: 1px solid #b71c1c; /* Borda vermelha mais escura */
+    background-color: #f8d7da;
+    color: #721c24;
 }
 
-/* Estilo para mensagens de sucesso */
 .message.success {
-    background-color: #388e3c; /* Verde escuro */
-    border: 1px solid #2c6c2f; /* Borda verde mais escura */
+    background-color: #d4edda;
+    color: #155724;
 }
 
 /* Estilo geral para a tabela */
@@ -338,4 +335,12 @@ select {
         justify-content: space-between;
         gap: 20px;
     }
+}
+
+#direitos-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 20px;
 }

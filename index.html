@@ -24,6 +24,7 @@
                     <button type="submit" class="button-action">Entrar</button>
                 </form>
                 <button id="create-account-btn" class="button-action" onclick="showRegister()">Criar Conta</button>
+
             </section>
 
             <!-- Registro -->
@@ -58,6 +59,7 @@
                     <button onclick="showForm('cadastro-produto')">Cadastrar Produto</button>
                     <form id="cadastro-cliente" class="form" style="display: none;">
                         <h3>Cadastrar Cliente</h3>
+                        <div id="cliente-message" class="message"></div>
                         <label for="cliente-nome">Nome:</label>
                         <input type="text" id="cliente-nome">
                         <label for="cliente-rg">RG:</label>
@@ -72,6 +74,7 @@
                     </form>
                     <form id="cadastro-fornecedor" class="form" style="display: none;">
                         <h3>Cadastrar Fornecedor</h3>
+                        <div id="fornecedor-message" class="message"></div>
                         <label for="fornecedor-cnpj">CNPJ:</label>
                         <input type="text" id="fornecedor-cnpj">
                         <label for="fornecedor-nome">Nome:</label>
@@ -82,6 +85,7 @@
                     </form>
                     <form id="cadastro-produto" class="form" style="display: none;">
                         <h3>Cadastrar Produto</h3>
+                        <div id="produto-message" class="message"></div>
                         <label for="produto-codigo">Código:</label>
                         <input type="number" id="produto-codigo">
                         <label for="produto-nome">Nome:</label>
@@ -123,6 +127,7 @@
                         <button type="button" onclick="processSale()">Realizar Venda</button>
                     </form>
                     <div id="venda-status"></div>
+                    
                 </div>
                 <div id="listar" class="section" style="display: none;">
                     <h2>Listar</h2>
@@ -130,18 +135,36 @@
                     <button onclick="showList('clientes')">Listar Clientes</button>
                     <button onclick="showList('fornecedores')">Listar Fornecedores</button>
                     <div id="listar-results"></div>
+
                 </div>
+                
             </div>
+            <section id="direitos-section" style="display: none;">
+                <h2>Direitos da ISAU</h2>
+                <p>
+                    A ISAU reserva todos os direitos sobre o conteúdo e funcionalidades deste sistema. Isso inclui, mas não se limita a:
+                </p>
+                <ul>
+                    <li>O direito de propriedade intelectual sobre todo o software e interfaces.</li>
+                    <li>O direito de uso e distribuição do sistema em ambientes comerciais e pessoais.</li>
+                    <li>O direito de proteção contra cópias ou usos indevidos do sistema sem autorização prévia.</li>
+                    <li>O direito de privacidade e proteção de dados conforme regulamentações internacionais.</li>
+                </ul>
+                <p>Para mais informações, entre em contato com nosso suporte jurídico.</p>
+                <button onclick="voltarParaPrincipal()">Voltar</button>
+            </section>
+            
+            
         </main>
     </div>
-    <!-- Mensagens de erro e sucesso -->
-<div id="login-error" class="message error"></div>
-<div id="register-error" class="message error"></div>
-<div id="register-success" class="message success"></div>
 
-    <footer>
-        <p>&copy; 2024 Sistema de Gestão ISAU. Todos os direitos reservados.</p>
-    </footer>
+
+    
+
+    
+        <footer>
+            <p>&copy; 2024 Sistema de Gestão ISAU. <a href="#" onclick="mostrarDireitos()">Todos os direitos reservados</a>.</p>
+        </footer>
     <script src="script.js"></script>
 </body>
 </html>

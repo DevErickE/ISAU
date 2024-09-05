@@ -18,6 +18,12 @@ function showRegister() {
     document.getElementById('login-section').style.display = 'none';
     document.getElementById('register-section').style.display = 'block';
 }
+//Fução para exibir o sobre a empresa
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => section.style.display = 'none');
+    document.getElementById(sectionId).style.display = 'block';
+}
 
 // Função para esconder as mensagens
 function hideMessages() {
@@ -37,24 +43,27 @@ function showMain() {
 
 // Função para exibir uma seção específica
 function showSection(sectionId) {
-    document.querySelectorAll('.section').forEach(section => section.style.display = 'none');
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => section.style.display = 'none');
     document.getElementById(sectionId).style.display = 'block';
 }
 
 // Função para mostrar um formulário específico
 function showForm(formId) {
-    document.querySelectorAll('.form').forEach(form => form.style.display = 'none');
+    const forms = document.querySelectorAll('.form');
+    forms.forEach(form => form.style.display = 'none');
     document.getElementById(formId).style.display = 'block';
 }
 
 // Função para mostrar uma mensagem
 function showMessage(elementId, message, isError) {
-    hideMessages();
+    hideMessages(); // Esconde todas as mensagens antes de exibir a nova
     const messageElement = document.getElementById(elementId);
     messageElement.textContent = message;
     messageElement.style.display = 'block';
-    messageElement.className = isError ? 'message error' : 'message success';
+    messageElement.className = isError ? 'message error' : 'message success'; // Aplica a classe correta
 }
+
 
 // Função para o login de usuário
 document.getElementById('login-form').addEventListener('submit', function (event) {
@@ -90,6 +99,7 @@ document.getElementById('register-form').addEventListener('submit', function (ev
     }
 });
 
+
 // Função para salvar cliente
 function saveClient() {
     const name = document.getElementById('cliente-nome').value;
@@ -105,7 +115,7 @@ function saveClient() {
     document.getElementById('cliente-data-nascimento').value = '';
     document.getElementById('cliente-endereco').value = '';
     
-    showMessage('client-success', 'Cliente cadastrado com sucesso', false);
+    alert('Cliente cadastrado com sucesso!');
 }
 
 // Função para salvar fornecedor
@@ -119,7 +129,7 @@ function saveSupplier() {
     document.getElementById('fornecedor-nome').value = '';
     document.getElementById('fornecedor-endereco').value = '';
     
-    showMessage('supplier-success', 'Fornecedor cadastrado com sucesso', false);
+    alert('Fornecedor cadastrado com sucesso!');
 }
 
 // Função para salvar produto
@@ -136,7 +146,7 @@ function saveProduct() {
     document.getElementById('produto-valor').value = '';
     
     updateProductDropdown();
-    showMessage('product-success', 'Produto cadastrado com sucesso', false);
+    alert('Produto cadastrado com sucesso!');
 }
 
 // Função para atualizar o dropdown de produtos
@@ -250,6 +260,24 @@ function logout() {
     document.getElementById('main-section').style.display = 'none';
     showLogin();
 }
+
+function mostrarDireitos() {
+    // Esconder todas as outras seções
+    document.getElementById('login-section').style.display = 'none';
+    document.getElementById('register-section').style.display = 'none';
+    document.getElementById('main-section').style.display = 'none';
+
+    // Exibir a seção de direitos
+    document.getElementById('direitos-section').style.display = 'block';
+}
+
+function voltarParaPrincipal() {
+    // Ocultar a seção de direitos
+    document.getElementById('direitos-section').style.display = 'none';
+    // Mostrar a seção de login
+    document.getElementById('login-section').style.display = 'block';
+}
+
 
 // Atualiza o dropdown de produtos ao carregar a página
 document.addEventListener('DOMContentLoaded', updateProductDropdown);
