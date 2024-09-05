@@ -25,7 +25,7 @@ A interface foi desenvolvida com foco na simplicidade e usabilidade, utilizando 
 - **CSS3:** Para estilização da interface.
 - **JavaScript:** Para adicionar a interatividade e lógica da aplicação.
 
-## 🔗 Link para acesso do nosso sistema
+## 🔗 Link para Acesso
 
 https://devericke.github.io/ISAU/
 
