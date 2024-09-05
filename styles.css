@@ -365,3 +365,157 @@ select {
     border: 1px solid #ddd;
     border-radius: 5px;
 }
+
+/* Estilo geral */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+section {
+    display: none; /* Esconda todas as seções inicialmente */
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.message.error {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.message.success {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+/* Estilos de formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"], input[type="password"], input[type="number"], input[type="date"], select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+    .container {
+        width: 90%;
+    }
+    
+    section {
+        display: block;
+    }
+
+    .form-group {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+    }
+
+    .form-group input, .form-group select {
+        flex: 1;
+    }
+
+    /* Layout flexível */
+    .form {
+        display: flex;
+        flex-direction: column;
+        max-width: 600px;
+        margin: auto;
+    }
+}
+
+/* Estilos para dispositivos pequenos */
+@media (max-width: 767px) {
+    .form {
+        width: 90%;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .form-group {
+        flex-direction: column;
+    }
+}
+
+/* Tabela responsiva */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+@media (max-width: 767px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    td {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 50%;
+        text-align: right;
+        position: relative;
+    }
+
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        padding-left: 10px;
+        text-align: left;
+    }
+}
