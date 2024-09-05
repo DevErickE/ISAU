@@ -229,25 +229,56 @@ function showList(type) {
 
 // Função para gerar relatório
 function generateReport(type) {
-    const data = {
-        clientes: clients,
-        fornecedores: suppliers,
-        produtos: products
-    }[type];
+    let data = [];
+    let header = "";
 
-    if (data.length === 0) {
-        alert('Nenhum dado encontrado para gerar o relatório.');
-        return;
+    if (type === 'clientes') {
+        data = clients;
+        header = "Nome".padEnd(20) + "RG".padEnd(15) + "CPF".padEnd(15) + "Data de Nascimento".padEnd(20) + "Endereço";
+    } else if (type === 'produtos') {
+        data = products;
+        header = "Código".padEnd(10) + "Nome".padEnd(20) + "Descrição".padEnd(30) + "Valor";
+    } else if (type === 'fornecedores') {
+        data = suppliers;
+        header = "CNPJ".padEnd(20) + "Nome".padEnd(20) + "Endereço";
     }
 
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'text/plain' });
+    // Criando o conteúdo do relatório
+    let reportContent = header + "\n" + "-".repeat(header.length) + "\n";
+
+    // Preenchendo os dados
+    data.forEach(item => {
+        if (type === 'clientes') {
+            reportContent += 
+                item.name.padEnd(20) + 
+                item.rg.padEnd(15) + 
+                item.cpf.padEnd(15) + 
+                item.birthDate.padEnd(20) + 
+                item.address.padEnd(30) + "\n";
+        } else if (type === 'produtos') {
+            reportContent += 
+                item.code.toString().padEnd(10) + 
+                item.name.padEnd(20) + 
+                item.description.padEnd(30) + 
+                item.value.toFixed(2).padEnd(10) + "\n";
+        } else if (type === 'fornecedores') {
+            reportContent += 
+                item.cnpj.padEnd(20) + 
+                item.name.padEnd(20) + 
+                item.address.padEnd(30) + "\n";
+        }
+    });
+
+    // Criando o arquivo .txt com conteúdo formatado
+    const blob = new Blob([reportContent], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `${type}-report.txt`;
+    a.download = `${type}-relatorio.txt`;
     a.click();
     URL.revokeObjectURL(url);
 }
+
 
 // Função para mostrar o formulário do relatório selecionado
 function showReportForm(type) {
