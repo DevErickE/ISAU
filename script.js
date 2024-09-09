@@ -105,7 +105,7 @@ document.getElementById('register-form').addEventListener('submit', function (ev
         } else {
             users.push({ username, password });
             showMessage('register-success', 'Conta criada com sucesso', false);
-            setTimeout(showLogin, 2000); // Voltar ao login após 2 segundos
+            setTimeout(showLogin, 1000); // Voltar ao login após 1 segundos
         }
     } else {
         showMessage('register-error', 'Senhas não coincidem', true);
