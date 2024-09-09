@@ -4,9 +4,21 @@ const clients = [];
 const suppliers = [];
 const products = [];
 
+// Função para limpar todos os formulários
+function clearForms() {
+    // Seleciona todos os formulários da página
+    const forms = document.querySelectorAll('form');
+    
+    // Itera sobre todos os formulários e limpa seus inputs
+    forms.forEach((form) => {
+        form.reset();
+    });
+}
+
 // Função para exibir a seção de login
 function showLogin() {
     hideMessages();
+    clearForms(); // Limpa os campos ao mudar para a tela de login
     document.getElementById('login-section').style.display = 'block';
     document.getElementById('register-section').style.display = 'none';
     document.getElementById('main-section').style.display = 'none';
@@ -14,6 +26,7 @@ function showLogin() {
 
 // Função para exibir a seção de registro
 function showRegister() {
+    clearForms(); // Limpa os campos ao mudar para a tela de login
     hideMessages();
     document.getElementById('login-section').style.display = 'none';
     document.getElementById('register-section').style.display = 'block';
@@ -309,6 +322,16 @@ function voltarParaPrincipal() {
     document.getElementById('login-section').style.display = 'block';
 }
 
+// script.js
+function filterList() {
+    const filter = document.getElementById('search').value.toLowerCase();
+    const items = document.querySelectorAll('.list-item');
+    items.forEach(item => {
+        item.style.display = item.textContent.toLowerCase().includes(filter) ? '' : 'none';
+    });
+}
+
 
 // Atualiza o dropdown de produtos ao carregar a página
 document.addEventListener('DOMContentLoaded', updateProductDropdown);
+
