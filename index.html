@@ -1,9 +1,8 @@
-<html lang="en">
+<html lang="pt_br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
-  
   <title>Sistema de Gestão ISAU</title>
 </head>
 <body>
@@ -57,8 +56,10 @@
                     <button onclick="showForm('cadastro-cliente')">Cadastrar Cliente</button>
                     <button onclick="showForm('cadastro-fornecedor')">Cadastrar Fornecedor</button>
                     <button onclick="showForm('cadastro-produto')">Cadastrar Produto</button>
+
                     <form id="cadastro-cliente" class="form" style="display: none;">
                         <h3>Cadastrar Cliente</h3>
+                        
                         <div id="cliente-message" class="message"></div>
                         <label for="cliente-nome">Nome:</label>
                         <input type="text" id="cliente-nome">
@@ -71,6 +72,7 @@
                         <label for="cliente-endereco">Endereço:</label>
                         <input type="text" id="cliente-endereco">
                         <button type="button" onclick="saveClient()">Salvar Cliente</button>
+                    
                     </form>
                     <form id="cadastro-fornecedor" class="form" style="display: none;">
                         <h3>Cadastrar Fornecedor</h3>

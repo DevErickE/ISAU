@@ -19,7 +19,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     margin: 0;
-    height: 100vh;
+    height: 106vh;
 }
 
 body::before {
@@ -31,10 +31,13 @@ body::before {
     height: 100%;
     background: rgba(0, 0, 0, 0.5); /* Ajuste a opacidade conforme necessário */
     z-index: -1; /* Coloca a camada abaixo do conteúdo da página */
+    
 }
 
 
+
 .container {
+    
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
@@ -42,7 +45,9 @@ body::before {
     background-color: #1e272e; /* Fundo escuro para o conteúdo */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    
 }
+
 
 /* Header */
 header {
@@ -51,6 +56,7 @@ header {
     padding: 1rem 2rem;
     border-radius: 8px;
     text-align: center;
+    
 }
 
 /* Main */
