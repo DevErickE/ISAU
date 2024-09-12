@@ -1,0 +1,169 @@
+<html lang="pt_br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Sistema de Gestão ISAU</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sistema de Gestão ISAU</h1>
+        </header>
+        <main>
+            <!-- Login -->
+            <section id="login-section">
+                <h1>Login</h1>
+                <div id="login-error" class="message error"></div>
+                <form id="login-form">
+                    <label for="login-username">Usuário</label>
+                    <input type="text" id="login-username" name="username" required placeholder="Digite seu usuário">
+                    <label for="login-password">Senha</label>
+                    <div class="password-container">
+                    <input type="password" id="login-password" name="password" required placeholder="Digite sua senha">
+                </div>
+                    <button type="submit" class="button-action">Entrar</button>
+                </form>
+                <button id="create-account-btn"  class="button-action" onclick="showRegister()">Criar Conta</button>
+
+            </section>
+
+            <!-- Registro -->
+            <section id="register-section" style="display: none;">
+                <h1>Criar Conta</h1>
+                <div id="register-error" class="message error"></div>
+                <div id="register-success" class="message success"></div>
+                <form id="register-form">
+                    <label for="register-username">Usuário</label>
+                    <input type="text" id="register-username" name="username" required placeholder="Crie um usuário">
+                    <label for="register-password">Senha</label>
+                    <input type="password" id="register-password" name="password" required placeholder="Crie uma senha">
+                    <label for="register-confirm-password">Confirmar Senha</label>
+                    <input type="password" id="register-confirm-password" name="confirm-password" required placeholder="Confirme sua senha">
+                    <button type="submit" class="button-action">Criar Conta</button>
+                </form>
+                <button id="back-to-login-btn" class="button-action" onclick="showLogin()">Voltar ao Login</button>
+            </section>
+
+            <div id="main-section" style="display: none;">
+                <nav>
+                    <button onclick="showSection('cadastro')">Cadastro</button>
+                    <button onclick="showSection('relatorio')">Relatórios</button>
+                    <button onclick="showSection('caixa')">Frente de Caixa</button>
+                    <button onclick="showSection('listar')">Listar</button>
+                    <button onclick="logout()">Sair</button>
+                </nav>
+                <div id="cadastro" class="section" style="display: none;">
+                    <h2>Cadastro</h2>
+                    <button onclick="showForm('cadastro-cliente')">Cadastrar Cliente</button>
+                    <button onclick="showForm('cadastro-fornecedor')">Cadastrar Fornecedor</button>
+                    <button onclick="showForm('cadastro-produto')">Cadastrar Produto</button>
+
+                    <form id="cadastro-cliente" class="form" style="display: none;">
+                        <h3>Cadastrar Cliente</h3>
+                        
+                        <div id="cliente-message" class="message"></div>
+                        <label for="cliente-nome">Nome:</label>
+                        <input type="text" id="cliente-nome">
+                        <label for="cliente-rg">RG:</label>
+                        <input type="text" id="cliente-rg">
+                        <label for="cliente-cpf">CPF:</label>
+                        <input type="text" id="cliente-cpf">
+                        <label for="cliente-data-nascimento">Data de Nascimento:</label>
+                        <input type="date" id="cliente-data-nascimento">
+                        <label for="cliente-endereco">Endereço:</label>
+                        <input type="text" id="cliente-endereco">
+                        <button type="button" onclick="saveClient()">Salvar Cliente</button>
+                    
+                    </form>
+                    <form id="cadastro-fornecedor" class="form" style="display: none;">
+                        <h3>Cadastrar Fornecedor</h3>
+                        <div id="fornecedor-message" class="message"></div>
+                        <label for="fornecedor-cnpj">CNPJ:</label>
+                        <input type="text" id="fornecedor-cnpj">
+                        <label for="fornecedor-nome">Nome:</label>
+                        <input type="text" id="fornecedor-nome">
+                        <label for="fornecedor-endereco">Endereço:</label>
+                        <input type="text" id="fornecedor-endereco">
+                        <button type="button" onclick="saveSupplier()">Salvar Fornecedor</button>
+                    </form>
+                    <form id="cadastro-produto" class="form" style="display: none;">
+                        <h3>Cadastrar Produto</h3>
+                        <div id="produto-message" class="message"></div>
+                        <label for="produto-codigo">Código:</label>
+                        <input type="number" id="produto-codigo">
+                        <label for="produto-nome">Nome:</label>
+                        <input type="text" id="produto-nome">
+                        <label for="produto-descricao">Descrição:</label>
+                        <input type="text" id="produto-descricao">
+                        <label for="produto-valor">Valor:</label>
+                        <input type="number" id="produto-valor" step="0.01">
+                        <button type="button" onclick="saveProduct()">Salvar Produto</button>
+                    </form>
+                </div>
+                <div id="relatorio" class="section" style="display: none;">
+                    <h2>Relatórios</h2>
+                    <button onclick="showReportForm('clientes')">Relatório de Clientes</button>
+                    <button onclick="showReportForm('produtos')">Relatório de Produtos</button>
+                    <button onclick="showReportForm('fornecedores')">Relatório de Fornecedores</button>
+                    <form id="report-clientes" class="report-form" style="display: none;">
+                        <h3>Relatório de Clientes</h3>
+                        <button type="button" onclick="generateReport('clientes')">Gerar Relatório</button>
+                    </form>
+                    <form id="report-produtos" class="report-form" style="display: none;">
+                        <h3>Relatório de Produtos</h3>
+                        <button type="button" onclick="generateReport('produtos')">Gerar Relatório</button>
+                    </form>
+                    <form id="report-fornecedores" class="report-form" style="display: none;">
+                        <h3>Relatório de Fornecedores</h3>
+                        <button type="button" onclick="generateReport('fornecedores')">Gerar Relatório</button>
+                    </form>
+                </div>
+                <div id="caixa" class="section" style="display: none;">
+                    <h2>Frente de Caixa</h2>
+                    <form id="venda-form">
+                        <label for="venda-produto">Produto:</label>
+                        <select id="venda-produto">
+                            <!-- Produtos serão adicionados aqui -->
+                        </select>
+                        <label for="venda-quantidade">Quantidade:</label>
+                        <input type="number" id="venda-quantidade" min="1" required>
+                        <button type="button" onclick="processSale()">Realizar Venda</button>
+                    </form>
+                    <div id="venda-status"></div>
+                    
+                </div>
+                <div id="listar" class="section" style="display: none;">
+                    <h2>Listar</h2>
+                    <button onclick="showList('produtos')">Listar Produtos</button>
+                    <button onclick="showList('clientes')">Listar Clientes</button>
+                    <button onclick="showList('fornecedores')">Listar Fornecedores</button>
+                    <div id="listar-results"></div>
+
+                </div>
+                
+            </div>
+            <section id="direitos-section" style="display: none;">
+                <h2>Direitos da ISAU</h2>
+                <p>
+                    A ISAU reserva todos os direitos sobre o conteúdo e funcionalidades deste sistema. Isso inclui, mas não se limita a:
+                </p>
+                <ul>
+                    <li>O direito de propriedade intelectual sobre todo o software e interfaces.</li>
+                    <li>O direito de uso e distribuição do sistema em ambientes comerciais e pessoais.</li>
+                    <li>O direito de proteção contra cópias ou usos indevidos do sistema sem autorização prévia.</li>
+                    <li>O direito de privacidade e proteção de dados conforme regulamentações internacionais.</li>
+                </ul>
+                <p>Para mais informações, entre em contato com nosso suporte jurídico.</p>
+                <button onclick="voltarParaPrincipal()">Voltar</button>
+            </section>
+                
+        </main>
+    </div>  
+
+        <footer>
+            <p>&copy; 2024 Sistema de Gestão ISAU. <a href="#" onclick="mostrarDireitos()">Todos os direitos reservados</a>.</p>
+        </footer>
+    <script src="script.js"></script>
+</body>
+</html>
