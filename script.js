@@ -115,7 +115,7 @@ document.getElementById('register-form').addEventListener('submit', function (ev
         } else {
             users.push({ username, password });
             showMessage('register-success', 'Conta criada com sucesso', false);
-            setTimeout(showLogin, 2000);
+            setTimeout(showLogin, 1000);
         }
     }
      else {
