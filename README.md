@@ -19,7 +19,7 @@ O objetivo deste projeto é fornecer uma ferramenta simples e eficiente para a g
 
 A interface foi desenvolvida com foco na simplicidade e usabilidade, utilizando uma paleta de cores que facilita a navegação e melhora a experiência do usuário.
 
-### 🖥️ Tecnologias Utilizadas
+## 🖥️ Tecnologias Utilizadas
 
 - **HTML5:** Para a estruturação do conteúdo.
 - **CSS3:** Para estilização da interface.
