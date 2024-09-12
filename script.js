@@ -99,19 +99,29 @@ document.getElementById('register-form').addEventListener('submit', function (ev
     const password = document.getElementById('register-password').value;
     const confirmPassword = document.getElementById('register-confirm-password').value;
 
+    // Verificar se a senha tem pelo menos 4 caracteres
+    if (password.length < 4 && confirmPassword === password) {
+        showMessage('register-error', 'A senha deve ter no mínimo 4 caracteres.', true);
+        return;
+    } if (password.length != confirmPassword){
+        showMessage('register-error', 'Senhas não coincidem', true);
+
+    }
+
+    // Verificar se as senhas coincidem
     if (password === confirmPassword) {
         if (users.find(u => u.username === username)) {
             showMessage('register-error', 'Conta existente', true);
         } else {
             users.push({ username, password });
             showMessage('register-success', 'Conta criada com sucesso', false);
-            setTimeout(showLogin, 1000); // Voltar ao login após 1 segundos
+            setTimeout(showLogin, 2000);
         }
-    } else {
+    }
+     else {
         showMessage('register-error', 'Senhas não coincidem', true);
     }
 });
-
 
 // Função para salvar cliente
 function saveClient() {
