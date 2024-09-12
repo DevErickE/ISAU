@@ -341,11 +341,39 @@ function filterList() {
     });
 }
 
-function togglePasswordVisibility(id) {
-    const passwordField = document.getElementById(id);
-    const type = passwordField.type === 'password' ? 'text' : 'password';
-    passwordField.type = type;
-}
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleLoginPassword = document.getElementById('toggleLoginPassword');
+    const toggleRegisterPassword = document.getElementById('toggleRegisterPassword');
+    
+    if (toggleLoginPassword) {
+        toggleLoginPassword.addEventListener('click', () => {
+            const loginPasswordInput = document.getElementById('login-password');
+            if (loginPasswordInput.type === 'password') {
+                loginPasswordInput.type = 'text';
+                toggleLoginPassword.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                loginPasswordInput.type = 'password';
+                toggleLoginPassword.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        });
+    }
+
+    if (toggleRegisterPassword) {
+        toggleRegisterPassword.addEventListener('click', () => {
+            const registerPasswordInput = document.getElementById('register-password');
+            if (registerPasswordInput.type === 'password') {
+                registerPasswordInput.type = 'text';
+                toggleRegisterPassword.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                registerPasswordInput.type = 'password';
+                toggleRegisterPassword.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        });
+    }
+});
+
+// Restante do código JavaScript para outras funcionalidades
 
 
 

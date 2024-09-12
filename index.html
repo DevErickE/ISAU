@@ -1,9 +1,25 @@
+<!DOCTYPE html>
 <html lang="pt_br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <title>Sistema de Gestão ISAU</title>
+  <style>
+
+    
+
+    .password-container .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;   
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 18px;
+        color: #333;
+    }
+  </style>
 </head>
 <body>
     <div class="container">
@@ -16,16 +32,19 @@
                 <h1>Login</h1>
                 <div id="login-error" class="message error"></div>
                 <form id="login-form">
+                    
                     <label for="login-username">Usuário</label>
+                    <div class="password-container">
                     <input type="text" id="login-username" name="username" required placeholder="Digite seu usuário">
+                </div>
                     <label for="login-password">Senha</label>
                     <div class="password-container">
-                    <input type="password" id="login-password" name="password" required placeholder="Digite sua senha">
-                </div>
+                        <input type="password" id="login-password" name="password" required placeholder="Digite sua senha">
+                        <i class="toggle-password fas fa-eye" id="toggleLoginPassword"></i>
+                    </div>
                     <button type="submit" class="button-action">Entrar</button>
                 </form>
-                <button id="create-account-btn"  class="button-action" onclick="showRegister()">Criar Conta</button>
-
+                <button id="create-account-btn" class="button-action" onclick="showRegister()">Criar Conta</button>
             </section>
 
             <!-- Registro -->
@@ -35,11 +54,18 @@
                 <div id="register-success" class="message success"></div>
                 <form id="register-form">
                     <label for="register-username">Usuário</label>
+                    <div class="password-container">
                     <input type="text" id="register-username" name="username" required placeholder="Crie um usuário">
+                </div>
                     <label for="register-password">Senha</label>
-                    <input type="password" id="register-password" name="password" required placeholder="Crie uma senha">
+                    <div class="password-container">
+                        <input type="password" id="register-password" name="password" required placeholder="Crie uma senha">
+                        <i class="toggle-password fas fa-eye" id="toggleRegisterPassword"></i>
+                    </div>
                     <label for="register-confirm-password">Confirmar Senha</label>
+                    <div class="password-container">
                     <input type="password" id="register-confirm-password" name="confirm-password" required placeholder="Confirme sua senha">
+                    </div>
                     <button type="submit" class="button-action">Criar Conta</button>
                 </form>
                 <button id="back-to-login-btn" class="button-action" onclick="showLogin()">Voltar ao Login</button>
@@ -61,7 +87,6 @@
 
                     <form id="cadastro-cliente" class="form" style="display: none;">
                         <h3>Cadastrar Cliente</h3>
-                        
                         <div id="cliente-message" class="message"></div>
                         <label for="cliente-nome">Nome:</label>
                         <input type="text" id="cliente-nome">
@@ -74,7 +99,6 @@
                         <label for="cliente-endereco">Endereço:</label>
                         <input type="text" id="cliente-endereco">
                         <button type="button" onclick="saveClient()">Salvar Cliente</button>
-                    
                     </form>
                     <form id="cadastro-fornecedor" class="form" style="display: none;">
                         <h3>Cadastrar Fornecedor</h3>
@@ -131,7 +155,6 @@
                         <button type="button" onclick="processSale()">Realizar Venda</button>
                     </form>
                     <div id="venda-status"></div>
-                    
                 </div>
                 <div id="listar" class="section" style="display: none;">
                     <h2>Listar</h2>
@@ -139,9 +162,7 @@
                     <button onclick="showList('clientes')">Listar Clientes</button>
                     <button onclick="showList('fornecedores')">Listar Fornecedores</button>
                     <div id="listar-results"></div>
-
                 </div>
-                
             </div>
             <section id="direitos-section" style="display: none;">
                 <h2>Direitos da ISAU</h2>
@@ -157,13 +178,12 @@
                 <p>Para mais informações, entre em contato com nosso suporte jurídico.</p>
                 <button onclick="voltarParaPrincipal()">Voltar</button>
             </section>
-                
         </main>
     </div>  
 
-        <footer>
-            <p>&copy; 2024 Sistema de Gestão ISAU. <a href="#" onclick="mostrarDireitos()">Todos os direitos reservados</a>.</p>
-        </footer>
+    <footer>
+        <p>&copy; 2024 Sistema de Gestão ISAU. <a href="#" onclick="mostrarDireitos()">Todos os direitos reservados</a>.</p>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
