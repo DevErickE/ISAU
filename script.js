@@ -89,6 +89,7 @@ document.getElementById('login-form').addEventListener('submit', function (event
         showMain();
     } else {
         showMessage('login-error', 'Usuário ou senha incorretos', true);
+        setTimeout(showLogin, 700);
     }
 });
 
@@ -102,10 +103,11 @@ document.getElementById('register-form').addEventListener('submit', function (ev
     // Verificar se a senha tem pelo menos 4 caracteres
     if (password.length < 4 && confirmPassword === password) {
         showMessage('register-error', 'A senha deve ter no mínimo 4 caracteres.', true);
+        setTimeout(showRegister, 700);
         return;
     } if (password.length != confirmPassword){
         showMessage('register-error', 'Senhas não coincidem', true);
-
+        setTimeout(showRegister, 700);
     }
 
     // Verificar se as senhas coincidem
@@ -115,7 +117,7 @@ document.getElementById('register-form').addEventListener('submit', function (ev
         } else {
             users.push({ username, password });
             showMessage('register-success', 'Conta criada com sucesso', false);
-            setTimeout(showLogin, 1000);
+            setTimeout(showLogin, 700);
         }
     }
      else {
