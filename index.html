@@ -12,6 +12,12 @@
 <link rel="icon" href="imagens/favicon.png" type="image/png">
 
 <body>
+<!-- Tela de carregamento -->
+<div id="loading-screen">
+    <div class="spinner"></div>
+    <p>Carregando...</p>
+</div>
+
     <div class="container">
         <header class="imagem">
             <h1>Sistema de Gestão ISAU</h1>
@@ -37,6 +43,7 @@
                     </div>
                     <button type="submit" class="button-action">Entrar</button>
                 </form>
+                
                 <button id="create-account-btn" class="button-action" onclick="showRegister()">Criar Conta</button>
 
                 <button id="create-account-btn" class="button-action" onclick="showEmpresa()">Sobre Nós</button>

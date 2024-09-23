@@ -382,11 +382,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    
 });
-
-// Restante do código JavaScript para outras funcionalidades
-
-
+window.addEventListener('load', function () {
+    // Ocultar a tela de carregamento
+    document.getElementById('loading-screen').style.display = 'none';
+    
+    // Exibir o conteúdo do site
+    document.getElementById('content').style.display = 'block';
+});
 
 // Atualiza o dropdown de produtos ao carregar a página
 document.addEventListener('DOMContentLoaded', updateProductDropdown);
