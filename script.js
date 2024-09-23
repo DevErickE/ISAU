@@ -385,11 +385,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
 });
 window.addEventListener('load', function () {
-    // Ocultar a tela de carregamento
-    document.getElementById('loading-screen').style.display = 'none';
-    
-    // Exibir o conteúdo do site
-    document.getElementById('content').style.display = 'block';
+    // Manter a tela de carregamento por 5 segundos antes de ocultá-la
+    setTimeout(function() {
+        // Ocultar a tela de carregamento
+        document.getElementById('loading-screen').style.display = 'none';
+        
+        // Exibir o conteúdo do site
+        document.getElementById('content').style.display = 'block';
+    }, 150); // 5000 milissegundos = 5 segundos
 });
 
 // Atualiza o dropdown de produtos ao carregar a página
