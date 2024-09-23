@@ -34,7 +34,15 @@ body::before {
     
 }
 
-
+.password-container .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;   
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #333;
+}
 
 .container {
     
@@ -46,17 +54,23 @@ body::before {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     
+    
 }
-
+.imagem {
+    background-image: url('imagens/favicon_novo.png');
+    background-position: 840px;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 0 10px black;
+} 
 
 /* Header */
 header {
+    
     background-color: #1abc9c; /* Tom escuro de verde-água */
     color: #fff;
     padding: 1rem 2rem;
     border-radius: 8px;
     text-align: center;
-    
 }
 
 /* Main */
@@ -90,6 +104,7 @@ h3 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     padding: 2rem;
     margin-bottom: 1.5rem;
+    
 }
 
 /* Formulários */
@@ -104,6 +119,9 @@ label {
     color: #adc0c1; /* Cor cinza clara para labels */
 }
 
+.cor_email {
+    color:blue
+}
 input[type="text"], input[type="password"], input[type="number"], input[type="date"], select {
     padding: 0.75rem;
     margin-bottom: 1rem;
@@ -112,6 +130,7 @@ input[type="text"], input[type="password"], input[type="number"], input[type="da
     font-size: 1rem;
     background-color: #34495e; /* Fundo escuro para inputs */
     color: #ecf0f1; /* Texto claro dentro dos inputs */
+    
 }
 
 button {
@@ -367,6 +386,14 @@ select {
 }
 
 #direitos-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+#sobrenos-section {
     padding: 20px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;

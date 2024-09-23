@@ -31,6 +31,14 @@ function showRegister() {
     document.getElementById('login-section').style.display = 'none';
     document.getElementById('register-section').style.display = 'block';
 }
+function showEmpresa() {
+    // Esconder todas as outras seções
+    document.getElementById('login-section').style.display = 'none';
+    document.getElementById('register-section').style.display = 'none';
+    document.getElementById('main-section').style.display = 'none';
+    document.getElementById('sobrenos-section').style.display = 'block';
+
+}
 //Fução para exibir o sobre a empresa
 function showSection(sectionId) {
     const sections = document.querySelectorAll('.section');
@@ -330,6 +338,7 @@ function mostrarDireitos() {
 function voltarParaPrincipal() {
     // Ocultar a seção de direitos
     document.getElementById('direitos-section').style.display = 'none';
+    document.getElementById('sobrenos-section').style.display = 'none';
     // Mostrar a seção de login
     document.getElementById('login-section').style.display = 'block';
 }

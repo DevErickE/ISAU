@@ -1,32 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt_br">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <title>Sistema de Gestão ISAU</title>
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Sistema de Gestão ISAU</title>
 
-    
-
-    .password-container .toggle-password {
-        position: absolute;
-        right: 10px;
-        top: 50%;   
-        transform: translateY(-50%);
-        cursor: pointer;
-        font-size: 18px;
-        color: #333;
-    }
-  </style>
 </head>
 <link rel="icon" href="imagens/favicon.png" type="image/png">
 
 <body>
     <div class="container">
-        <header>
+        <header class="imagem">
             <h1>Sistema de Gestão ISAU</h1>
+            </header>
         </header>
         <main>
             <!-- Login -->
@@ -34,19 +23,23 @@
                 <h1>Login</h1>
                 <div id="login-error" class="message error"></div>
                 <form id="login-form">
-                    
+
                     <label for="login-username">Usuário</label>
                     <div class="password-container">
-                    <input type="text" id="login-username" name="username" required placeholder="Digite seu usuário">
-                </div>
+                        <input type="text" id="login-username" name="username" required
+                            placeholder="Digite seu usuário">
+                    </div>
                     <label for="login-password">Senha</label>
                     <div class="password-container">
-                        <input type="password" id="login-password" name="password" required placeholder="Digite sua senha">
+                        <input type="password" id="login-password" name="password" required
+                            placeholder="Digite sua senha">
                         <i class="toggle-password fas fa-eye" id="toggleLoginPassword"></i>
                     </div>
                     <button type="submit" class="button-action">Entrar</button>
                 </form>
                 <button id="create-account-btn" class="button-action" onclick="showRegister()">Criar Conta</button>
+
+                <button id="create-account-btn" class="button-action" onclick="showEmpresa()">Sobre Nós</button>
             </section>
 
             <!-- Registro -->
@@ -57,16 +50,19 @@
                 <form id="register-form">
                     <label for="register-username">Usuário</label>
                     <div class="password-container">
-                    <input type="text" id="register-username" name="username" required placeholder="Crie um usuário">
-                </div>
+                        <input type="text" id="register-username" name="username" required
+                            placeholder="Crie um usuário">
+                    </div>
                     <label for="register-password">Senha</label>
                     <div class="password-container">
-                        <input type="password" id="register-password" name="password" required placeholder="Crie uma senha">
+                        <input type="password" id="register-password" name="password" required
+                            placeholder="Crie uma senha">
                         <i class="toggle-password fas fa-eye" id="toggleRegisterPassword"></i>
                     </div>
                     <label for="register-confirm-password">Confirmar Senha</label>
                     <div class="password-container">
-                    <input type="password" id="register-confirm-password" name="confirm-password" required placeholder="Confirme sua senha">
+                        <input type="password" id="register-confirm-password" name="confirm-password" required
+                            placeholder="Confirme sua senha">
                     </div>
                     <button type="submit" class="button-action">Criar Conta</button>
                 </form>
@@ -169,7 +165,8 @@
             <section id="direitos-section" style="display: none;">
                 <h2>Direitos da ISAU</h2>
                 <p>
-                    A ISAU reserva todos os direitos sobre o conteúdo e funcionalidades deste sistema. Isso inclui, mas não se limita a:
+                    A ISAU reserva todos os direitos sobre o conteúdo e funcionalidades deste sistema. Isso inclui, mas
+                    não se limita a:
                 </p>
                 <ul>
                     <li>O direito de propriedade intelectual sobre todo o software e interfaces.</li>
@@ -180,12 +177,31 @@
                 <p>Para mais informações, entre em contato com nosso suporte jurídico.</p>
                 <button onclick="voltarParaPrincipal()">Voltar</button>
             </section>
+
+            <section id="sobrenos-section" style="display: none;">
+                <h2>Sobre a Empresa</h2>
+                <ul>
+                    <li>A <u>ISAU</u> oferece soluções completas de gestão de negócios, incluindo controle de
+                        vendas, gestão de estoques, fluxo de caixa e cadastros de clientes, produtos e fornecedores.
+                        Nosso sistema automatiza processos e gera relatórios em tempo real, facilitando a tomada de
+                        decisões e otimizando operações. Ideal para empresas que buscam eficiência e crescimento
+                        estratégico.</li>
+                </ul>
+                <h2>Contatos</h2>
+                <ul>
+                    <li><strong>Email:</strong> <a class="cor_email"><u>suporte.isau@gmail.com</u></a></li>
+                </ul>
+                <br>mais informações em breve...
+                <p><button onclick="voltarParaPrincipal()">Voltar</button></p>
+            </section>
         </main>
-    </div>  
+    </div>
 
     <footer>
-        <p>&copy; 2024 Sistema de Gestão ISAU. <a href="#" onclick="mostrarDireitos()">Todos os direitos reservados</a>.</p>
+        <p>&copy; 2024 Sistema de Gestão ISAU. <a href="#" onclick="mostrarDireitos()">Todos os direitos reservados</a>.
+        </p>
     </footer>
     <script src="script.js"></script>
 </body>
+
 </html>
