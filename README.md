@@ -29,6 +29,10 @@ A interface foi desenvolvida com foco na simplicidade e usabilidade, utilizando 
 
 https://devericke.github.io/ISAU/
 
+## 📧 Email Para Contato
+
+suporte.isau@gmail.com
+
 ## 📦 Estrutura do Projeto
 
 ```bash
