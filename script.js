@@ -230,7 +230,7 @@ function showList(type) {
     }
 
     if (data.length === 0) {
-        resultsDiv.innerHTML = '<p>Nenhum item encontrado</p>';
+        resultsDiv.innerHTML = '<label><p>Nenhum item encontrado</p><\label>';
     } else {
         const table = document.createElement('table');
         const header = document.createElement('thead');
