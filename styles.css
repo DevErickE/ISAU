@@ -517,10 +517,10 @@ body {
 
 /* Estado inicial minimizado */
 .chat-widget {
-    display: none; /* Escondido até ser clicado */
+    display: none; /* Oculto até ser clicado */
     width: 250px;
+    height: 300px; /* Tamanho fixo para evitar crescimento infinito */
     border-radius: 10px;
-    border: none;
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -528,6 +528,7 @@ body {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     font-size: 14px;
+    overflow: hidden; /* Evitar overflow descontrolado */
   }
   
   .chat-header {
@@ -537,14 +538,26 @@ body {
     text-align: center;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    position: relative;
+    cursor: move; /* Cursor de arrastar */
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
   }
   
   .chat-body {
-    max-height: 150px;
-    overflow-y: auto;
+    flex: 1; /* Faz com que o chat-body ocupe o espaço disponível */
+    max-height: 150px; /* Limita a altura do corpo do chat */
+    overflow-y: auto; /* Permite rolagem se as mensagens excederem a altura */
     padding: 8px;
     background-color: #34495e;
-  }
+}
   
   .chat-footer {
     display: flex;
@@ -572,14 +585,13 @@ body {
     font-size: 13px;
     border-radius: 5px;
     margin-left: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
   }
   
   .chat-footer button:hover {
     background-color: #16a085;
   }
   
-  /* Ícone flutuante pequeno para iniciar o chat */
+  /* Estilo do ícone flutuante */
   .chat-toggle {
     width: 50px;
     height: 50px;
@@ -593,13 +605,18 @@ body {
     align-items: center;
     cursor: pointer;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 9999; /* Valor alto para garantir que esteja na frente de tudo */
+    z-index: 9999;
   }
   
   .chat-toggle img {
     width: 30px;
     height: 30px;
+
   }
+  
+  
+  
+  
   
   
   

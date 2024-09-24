@@ -422,24 +422,26 @@ document.getElementById('sendButton').addEventListener('click', function() {
     }
   });
   
-  // Seleciona os elementos
-const chatToggle = document.getElementById('chatToggle');
-const chatWidget = document.getElementById('chatWidget');
+// Seleciona os elementos
+const chatWidget = document.getElementById('chatWidget'); // Caixa de chat
+const chatHeader = document.getElementById('chatHeader'); // Cabeçalho do chat
+const closeChat = document.getElementById('closeChat'); // Botão de fechar
 
-// Adiciona o evento de clique
+let isDragging = false; // Variável de controle de arrasto
+let offsetX, offsetY; // Variáveis para armazenar a posição do mouse
+
+// Mostrar/ocultar chat ao clicar no ícone
 chatToggle.addEventListener('click', function() {
-  // Verifica se o chat está visível
-  if (chatWidget.style.display === 'none' || chatWidget.style.display === '') {
-    chatWidget.style.display = 'block'; // Exibe o chat
-    chatToggle.style.display = 'none'; // Esconde o ícone
-  }
+  chatWidget.style.display = 'block'; // Exibe a caixa de chat
+  chatToggle.style.display = 'none'; // Esconde o ícone flutuante
 });
 
-// Para minimizar o chat novamente
-chatWidget.addEventListener('mouseleave', function() {
-  chatWidget.style.display = 'none'; // Esconde o chat
-  chatToggle.style.display = 'flex'; // Mostra o ícone
+// Função para fechar o chat e voltar ao ícone flutuante
+closeChat.addEventListener('click', function() {
+  chatWidget.style.display = 'none'; // Esconde a caixa de chat
+  chatToggle.style.display = 'flex'; // Exibe o ícone flutuante novamente
 });
+
 
 
 // Atualiza o dropdown de produtos ao carregar a página
