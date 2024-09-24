@@ -405,22 +405,23 @@ window.addEventListener('load', function () {
 document.getElementById('sendButton').addEventListener('click', function() {
     var userMessage = document.getElementById('userMessage').value;
     if (userMessage.trim() !== '') {
-      // Exibir a mensagem no chat
-      var chatBody = document.getElementById('chatBody');
-      var messageElement = document.createElement('div');
-      messageElement.textContent = 'Você: ' + userMessage;
-      chatBody.appendChild(messageElement);
+        // Exibir a mensagem no chat
+        var chatBody = document.getElementById('chatBody');
+        var messageElement = document.createElement('div');
+        messageElement.textContent = 'Você: ' + userMessage;
+        chatBody.appendChild(messageElement);
   
-      // Enviar notificação via WhatsApp
-      var whatsappNumber = 'https://chat.whatsapp.com/C3d0jTs2ltJLUm71l27uew'; // Substitua pelo seu número
-      var whatsappMessage = encodeURIComponent('Mensagem do site: ' + userMessage);
-      var whatsappUrl = 'https://api.whatsapp.com/send?phone=' + whatsappNumber + '&text=' + whatsappMessage;
-      window.open(whatsappUrl, '_blank');
+        // Enviar notificação via WhatsApp
+        var whatsappGroupLink = 'https://chat.whatsapp.com/C3d0jTs2ltJLUm71l27uew'; // Link do grupo do WhatsApp
+        var whatsappMessage = encodeURIComponent('Mensagem do site: ' + userMessage);
+        var whatsappUrl = whatsappGroupLink + '?text=' + whatsappMessage; // Usando o link do grupo
+        window.open(whatsappUrl, '_blank');
   
-      // Limpar o campo de entrada
-      document.getElementById('userMessage').value = '';
+        // Limpar o campo de entrada
+        document.getElementById('userMessage').value = '';
     }
-  });
+});
+
   
 // Seleciona os elementos
 const chatWidget = document.getElementById('chatWidget'); // Caixa de chat
