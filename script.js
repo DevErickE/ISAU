@@ -412,7 +412,7 @@ document.getElementById('sendButton').addEventListener('click', function() {
       chatBody.appendChild(messageElement);
   
       // Enviar notificação via WhatsApp
-      var whatsappNumber = '5519983095339'; // Substitua pelo seu número
+      var whatsappNumber = 'https://chat.whatsapp.com/C3d0jTs2ltJLUm71l27uew'; // Substitua pelo seu número
       var whatsappMessage = encodeURIComponent('Mensagem do site: ' + userMessage);
       var whatsappUrl = 'https://api.whatsapp.com/send?phone=' + whatsappNumber + '&text=' + whatsappMessage;
       window.open(whatsappUrl, '_blank');
