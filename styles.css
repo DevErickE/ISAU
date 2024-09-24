@@ -393,6 +393,14 @@ select {
     margin-top: 20px;
 }
 
+#chat-section {
+    padding: 20px;
+    background-color: #2c3e50;
+    border: 1px solid #2c3e50;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
 #sobrenos-section {
     padding: 20px;
     background-color: #2c3e50;
@@ -489,7 +497,7 @@ body {
 .spinner {
     border: 8px solid #f3f3f3;
     border-radius: 50%;
-    border-top: 8px solid #3498db;
+    border-top: 8px solid #1abc9c;
     width: 60px;
     height: 60px;
     animation: spin 2s linear infinite;
@@ -505,3 +513,93 @@ body {
 #content {
     display: none;
 }
+
+/* Estado inicial minimizado */
+.chat-widget {
+    display: none; /* Escondido até ser clicado */
+    width: 250px;
+    border-radius: 10px;
+    border: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #2c3e50;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    font-size: 14px;
+  }
+  
+  .chat-header {
+    background-color: #1abc9c;
+    color: #2c3e50;
+    padding: 8px;
+    text-align: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .chat-body {
+    max-height: 150px;
+    overflow-y: auto;
+    padding: 8px;
+    background-color: #34495e;
+  }
+  
+  .chat-footer {
+    display: flex;
+    padding: 8px;
+    background-color: #2c3e50;
+  }
+  
+  .chat-footer input {
+    flex: 1;
+    padding: 4px;
+    font-size: 13px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+  }
+  
+  .chat-footer button {
+    background-color: #1abc9c;
+    color: #fff;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 13px;
+    border-radius: 5px;
+    margin-left: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .chat-footer button:hover {
+    background-color: #16a085;
+  }
+  
+  /* Ícone flutuante pequeno para iniciar o chat */
+  .chat-toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #1abc9c;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999; /* Valor alto para garantir que esteja na frente de tudo */
+  }
+  
+  .chat-toggle img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  
+  
+  

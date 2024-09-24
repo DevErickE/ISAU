@@ -16,6 +16,7 @@
 <div id="loading-screen">
     <div class="spinner"></div>
     <p>Carregando...</p>
+    
 </div>
 
     <div class="container">
@@ -46,7 +47,6 @@
                 </form>
                 
                 <button  id="create-account-btn" class="button-action" onclick="showRegister()">Criar Conta</button>
-
                 <button id="create-account-btn" class="button-action" onclick="showEmpresa()">Sobre Nós</button>
             </section>
 
@@ -208,12 +208,29 @@
                 <p><button onclick="voltarParaPrincipal()">Voltar</button></p>
             </section>
         </main>
+        <div class="chat-toggle" id="chatToggle">
+            <img src="https://img.icons8.com/ios-glyphs/30/000000/chat--v1.png" alt="Chat Icon"> <!-- Ícone do chat -->
+          </div>
+          
+          <div class="chat-widget" id="chatWidget">
+            <div class="chat-header">
+              <h3>Chat com a Empresa</h3>
+            </div>
+            <div class="chat-body" id="chatBody">
+              <!-- Mensagens serão exibidas aqui -->
+            </div>
+            <div class="chat-footer">
+              <input type="text" id="userMessage" placeholder="Digite sua mensagem...">
+              <button id="sendButton">Enviar</button>
+            </div>
+          </div>
     </div>
 
     <footer>
         <p>&copy; 2024 Sistema de Gestão ISAU. <a href="#" onclick="mostrarDireitos()">Todos os direitos reservados</a>.
         </p>
     </footer>
+    
     <script src="script.js"></script>
 </body>
 

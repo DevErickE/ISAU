@@ -330,11 +330,18 @@ function mostrarDireitos() {
     document.getElementById('login-section').style.display = 'none';
     document.getElementById('register-section').style.display = 'none';
     document.getElementById('main-section').style.display = 'none';
-
     // Exibir a seção de direitos
     document.getElementById('direitos-section').style.display = 'block';
 }
 
+function showChat() {
+    // Esconder todas as outras seções
+    document.getElementById('login-section').style.display = 'none';
+    document.getElementById('register-section').style.display = 'none';
+    document.getElementById('main-section').style.display = 'none';
+    document.getElementById('sobrenos-section').style.display = 'none';
+    document.getElementById('chat-section').style.display = 'block';
+}
 function voltarParaPrincipal() {
     // Ocultar a seção de direitos
     document.getElementById('direitos-section').style.display = 'none';
@@ -394,6 +401,46 @@ window.addEventListener('load', function () {
         document.getElementById('content').style.display = 'block';
     }, 150); // 5000 milissegundos = 5 segundos
 });
+
+document.getElementById('sendButton').addEventListener('click', function() {
+    var userMessage = document.getElementById('userMessage').value;
+    if (userMessage.trim() !== '') {
+      // Exibir a mensagem no chat
+      var chatBody = document.getElementById('chatBody');
+      var messageElement = document.createElement('div');
+      messageElement.textContent = 'Você: ' + userMessage;
+      chatBody.appendChild(messageElement);
+  
+      // Enviar notificação via WhatsApp
+      var whatsappNumber = '5519983095339'; // Substitua pelo seu número
+      var whatsappMessage = encodeURIComponent('Mensagem do site: ' + userMessage);
+      var whatsappUrl = 'https://api.whatsapp.com/send?phone=' + whatsappNumber + '&text=' + whatsappMessage;
+      window.open(whatsappUrl, '_blank');
+  
+      // Limpar o campo de entrada
+      document.getElementById('userMessage').value = '';
+    }
+  });
+  
+  // Seleciona os elementos
+const chatToggle = document.getElementById('chatToggle');
+const chatWidget = document.getElementById('chatWidget');
+
+// Adiciona o evento de clique
+chatToggle.addEventListener('click', function() {
+  // Verifica se o chat está visível
+  if (chatWidget.style.display === 'none' || chatWidget.style.display === '') {
+    chatWidget.style.display = 'block'; // Exibe o chat
+    chatToggle.style.display = 'none'; // Esconde o ícone
+  }
+});
+
+// Para minimizar o chat novamente
+chatWidget.addEventListener('mouseleave', function() {
+  chatWidget.style.display = 'none'; // Esconde o chat
+  chatToggle.style.display = 'flex'; // Mostra o ícone
+});
+
 
 // Atualiza o dropdown de produtos ao carregar a página
 document.addEventListener('DOMContentLoaded', updateProductDropdown);
