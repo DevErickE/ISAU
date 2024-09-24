@@ -546,10 +546,18 @@ body {
     position: absolute;
     top: 8px;
     right: 10px;
-    font-size: 20px;
-    color: red;
+    font-size: 30px; /* Aumenta o tamanho do X */
+    color: #ff4d4f; /* Vermelho padrão */
+    font-weight: bold;
     cursor: pointer;
+    transition: color 0.3s ease; /* Transição suave da cor */
   }
+  
+  .close-btn:hover {
+    color: #d90429; /* Vermelho mais forte ao passar o mouse */
+  }
+  
+  
   
   .chat-body {
     flex: 1; /* Faz com que o chat-body ocupe o espaço disponível */
