@@ -172,6 +172,7 @@ nav button:hover {
 /* Seções e formulários de relatório */
 .section {
     margin-top: 1.5rem;
+    color:#fff
 }
 
 .form {
@@ -339,7 +340,7 @@ footer p {
 }
 
 #listar-results tr:hover {
-    background-color: #9be2fa;
+    background-color: #1abc9c;
 }
 
 /* Estilo para relatórios */
