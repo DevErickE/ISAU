@@ -330,16 +330,16 @@ footer p {
 }
 
 #listar-results th {
-    background-color: #959696;
+    background-color: #2c3e50;
     font-weight: bold;
 }
 
 #listar-results tr:nth-child(even) {
-    background-color: #959696;
+    background-color: #2c3e50;
 }
 
 #listar-results tr:hover {
-    background-color: #7fdfff;
+    background-color: #9be2fa;
 }
 
 /* Estilo para relatórios */
