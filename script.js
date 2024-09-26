@@ -229,8 +229,21 @@ function showList(type) {
             data = [];
     }
 
+    // Mapeamento das traduções para português
+    const translations = {
+        name: 'Nome',          // Para clientes e fornecedores
+        rg: 'RG',              // Para clientes
+        cpf: 'CPF',            // Para clientes
+        birthDate: 'Data de Nascimento', // Para clientes
+        address: 'Endereço',   // Para clientes e fornecedores
+        cnpj: 'CNPJ',          // Para fornecedores
+        code: 'Código',        // Para produtos
+        description: 'Descrição', // Para produtos
+        value: 'Valor'         // Para produtos
+    };
+
     if (data.length === 0) {
-        resultsDiv.innerHTML = '<label><p>Nenhum item encontrado</p><\label>';
+        resultsDiv.innerHTML = '<label><p>Nenhum item encontrado</p></label>';
     } else {
         const table = document.createElement('table');
         const header = document.createElement('thead');
@@ -238,7 +251,7 @@ function showList(type) {
 
         Object.keys(data[0]).forEach(key => {
             const th = document.createElement('th');
-            th.textContent = key.charAt(0).toUpperCase() + key.slice(1);
+            th.textContent = translations[key] || key.charAt(0).toUpperCase() + key.slice(1); // Usar a tradução ou o nome original
             headerRow.appendChild(th);
         });
         header.appendChild(headerRow);
@@ -259,6 +272,8 @@ function showList(type) {
         resultsDiv.appendChild(table);
     }
 }
+
+
 
 // Função para gerar relatório
 function generateReport(type) {
