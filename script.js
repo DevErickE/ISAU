@@ -140,14 +140,20 @@ function saveClient() {
     const cpf = document.getElementById('cliente-cpf').value;
     const birthDate = document.getElementById('cliente-data-nascimento').value;
     const address = document.getElementById('cliente-endereco').value;
-    
+
+    // Validação para garantir que todos os campos sejam preenchidos
+    if (!name || !rg || !cpf || !birthDate || !address) {
+        alert('Por favor, preencha todos os campos do cliente.');
+        return;
+    }
+
     clients.push({ name, rg, cpf, birthDate, address });
     document.getElementById('cliente-nome').value = '';
     document.getElementById('cliente-rg').value = '';
     document.getElementById('cliente-cpf').value = '';
     document.getElementById('cliente-data-nascimento').value = '';
     document.getElementById('cliente-endereco').value = '';
-    
+
     alert('Cliente cadastrado com sucesso!');
 }
 
@@ -156,12 +162,18 @@ function saveSupplier() {
     const cnpj = document.getElementById('fornecedor-cnpj').value;
     const name = document.getElementById('fornecedor-nome').value;
     const address = document.getElementById('fornecedor-endereco').value;
-    
+
+    // Validação para garantir que todos os campos sejam preenchidos
+    if (!cnpj || !name || !address) {
+        alert('Por favor, preencha todos os campos do fornecedor.');
+        return;
+    }
+
     suppliers.push({ cnpj, name, address });
     document.getElementById('fornecedor-cnpj').value = '';
     document.getElementById('fornecedor-nome').value = '';
     document.getElementById('fornecedor-endereco').value = '';
-    
+
     alert('Fornecedor cadastrado com sucesso!');
 }
 
@@ -171,13 +183,19 @@ function saveProduct() {
     const name = document.getElementById('produto-nome').value;
     const description = document.getElementById('produto-descricao').value;
     const value = parseFloat(document.getElementById('produto-valor').value);
-    
+
+    // Validação para garantir que todos os campos sejam preenchidos
+    if (!code || !name || !description || isNaN(value)) {
+        alert('Por favor, preencha todos os campos do produto corretamente.');
+        return;
+    }
+
     products.push({ code, name, description, value });
     document.getElementById('produto-codigo').value = '';
     document.getElementById('produto-nome').value = '';
     document.getElementById('produto-descricao').value = '';
     document.getElementById('produto-valor').value = '';
-    
+
     updateProductDropdown();
     alert('Produto cadastrado com sucesso!');
 }
