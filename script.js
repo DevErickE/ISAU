@@ -252,18 +252,25 @@ function showList(type) {
     resultsDiv.innerHTML = '';
 
     let data;
+    let emptyMessage = '';
+
+    // Verificação do tipo de lista para definir o texto padrão
     switch (type) {
         case 'clientes':
             data = clients;
+            emptyMessage = 'Nenhum cliente encontrado.';
             break;
         case 'fornecedores':
             data = suppliers;
+            emptyMessage = 'Nenhum fornecedor encontrado.';
             break;
         case 'produtos':
             data = products;
+            emptyMessage = 'Nenhum produto encontrado.';
             break;
         default:
             data = [];
+            emptyMessage = 'Nenhum item encontrado.';
     }
 
     // Mapeamento das traduções para português
@@ -280,7 +287,7 @@ function showList(type) {
     };
 
     if (data.length === 0) {
-        resultsDiv.innerHTML = '<label><p>Nenhum item encontrado</p></label>';
+        resultsDiv.innerHTML = `<label><p>${emptyMessage}</p></label>`;
     } else {
         const table = document.createElement('table');
         const header = document.createElement('thead');
@@ -309,8 +316,6 @@ function showList(type) {
         resultsDiv.appendChild(table);
     }
 }
-
-
 
 // Função para gerar relatório
 function generateReport(type) {
