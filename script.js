@@ -133,6 +133,25 @@ document.getElementById('register-form').addEventListener('submit', function (ev
     }
 });
 
+// Função para exibir o alerta com uma mensagem personalizada
+function showAlert(message) {
+    const alertMessage = document.getElementById('alert-message');
+    const alertContainer = document.getElementById('custom-alert');
+    if (alertMessage && alertContainer) {
+        alertMessage.innerText = message; // Define a mensagem do alerta
+        alertContainer.style.display = 'flex'; // Exibe o alerta
+    }
+}
+
+// Função para fechar o alerta
+function closeAlert() {
+    const alertContainer = document.getElementById('custom-alert');
+    if (alertContainer) {
+        alertContainer.style.display = 'none'; // Esconde o alerta
+    }
+}
+
+
 // Função para salvar cliente
 function saveClient() {
     const name = document.getElementById('cliente-nome').value;
@@ -143,7 +162,7 @@ function saveClient() {
 
     // Validação para garantir que todos os campos sejam preenchidos
     if (!name || !rg || !cpf || !birthDate || !address) {
-        alert('Por favor, preencha todos os campos do cliente.');
+        showAlert('Por favor, preencha todos os campos do cliente.'); // Usa o alerta personalizado
         return;
     }
 
@@ -154,7 +173,7 @@ function saveClient() {
     document.getElementById('cliente-data-nascimento').value = '';
     document.getElementById('cliente-endereco').value = '';
 
-    alert('Cliente cadastrado com sucesso!');
+    showAlert('Cliente cadastrado com sucesso!'); // Alerta de sucesso
 }
 
 // Função para salvar fornecedor
@@ -165,7 +184,7 @@ function saveSupplier() {
 
     // Validação para garantir que todos os campos sejam preenchidos
     if (!cnpj || !name || !address) {
-        alert('Por favor, preencha todos os campos do fornecedor.');
+        showAlert('Por favor, preencha todos os campos do fornecedor.'); // Usa o alerta personalizado
         return;
     }
 
@@ -174,7 +193,7 @@ function saveSupplier() {
     document.getElementById('fornecedor-nome').value = '';
     document.getElementById('fornecedor-endereco').value = '';
 
-    alert('Fornecedor cadastrado com sucesso!');
+    showAlert('Fornecedor cadastrado com sucesso!'); // Alerta de sucesso
 }
 
 // Função para salvar produto
@@ -186,7 +205,7 @@ function saveProduct() {
 
     // Validação para garantir que todos os campos sejam preenchidos
     if (!code || !name || !description || isNaN(value)) {
-        alert('Por favor, preencha todos os campos do produto corretamente.');
+        showAlert('Por favor, preencha todos os campos do produto.'); // Usa o alerta personalizado
         return;
     }
 
@@ -197,7 +216,7 @@ function saveProduct() {
     document.getElementById('produto-valor').value = '';
 
     updateProductDropdown();
-    alert('Produto cadastrado com sucesso!');
+    showAlert('Produto cadastrado com sucesso!'); // Alerta de sucesso
 }
 
 // Função para atualizar o dropdown de produtos

@@ -621,6 +621,82 @@ body {
     height: 30px;
 
   }
+
+  /* Estilo do contêiner do alerta */
+.alert-container {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fundo transparente mais escuro */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Manter no topo */
+}
+
+/* Estilo da caixa do alerta */
+.alert-box {
+    background: linear-gradient(135deg, #34495e, #2c3e50); /* Fundo com gradiente */
+    color: white; /* Cor do texto */
+    padding: 25px;
+    width: 320px;
+    max-width: 90%;
+    border-radius: 15px; /* Bordas arredondadas */
+    text-align: center;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5); /* Sombra */
+    font-family: 'Arial', sans-serif; /* Fonte personalizada */
+}
+
+/* Estilo da mensagem de alerta */
+#alert-message {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 15px; /* Espaço entre a mensagem e o botão */
+}
+
+/* Estilo do botão de confirmação */
+.alert-box button {
+    background: #ff5e62; /* Cor inicial do botão */
+    background: linear-gradient(45deg, #16a085, #1abc9c); /* Gradiente do botão */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 25px; /* Botão arredondado */
+    font-size: 16px;
+    transition: background 0.3s, transform 0.2s; /* Animações suaves */
+}
+
+/* Efeito hover no botão */
+.alert-box button:hover {
+    background: linear-gradient(45deg, #24c5a4, #11d1ab); /* Inverte o gradiente no hover */
+    transform: scale(1.05); /* Aumenta um pouco no hover */
+}
+
+.alert-box button:active {
+    transform: scale(0.98); /* Efeito de clique */
+}
+
+/* Adicionando um efeito de animação de entrada */
+@keyframes alert-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-box {
+    animation: alert-fade-in 0.4s ease-out; /* Animação ao aparecer */
+}
+
+
   
   
   

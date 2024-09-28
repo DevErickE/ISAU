@@ -12,17 +12,17 @@
 <link rel="icon" href="imagens/favicon.png" type="image/png">
 
 <body>
-<!-- Tela de carregamento -->
-<div id="loading-screen">
-    <div class="spinner"></div>
-    <p>Carregando...</p>
-    
-</div>
+    <!-- Tela de carregamento -->
+    <div id="loading-screen">
+        <div class="spinner"></div>
+        <p>Carregando...</p>
+
+    </div>
 
     <div class="container">
         <header class="imagem">
             <h1>Sistema de Gestão ISAU</h1>
-            </header>
+        </header>
         </header>
         <main>
             <!-- Login -->
@@ -42,11 +42,11 @@
                             placeholder="Digite sua senha">
                         <i class="toggle-password fas fa-eye" id="toggleLoginPassword"></i>
                     </div>
-                    
+
                     <button type="submit" class="button-action">Entrar</button>
                 </form>
-                
-                <button  id="create-account-btn" class="button-action" onclick="showRegister()">Criar Conta</button>
+
+                <button id="create-account-btn" class="button-action" onclick="showRegister()">Criar Conta</button>
                 <button id="create-account-btn" class="button-action" onclick="showEmpresa()">Sobre Nós</button>
             </section>
 
@@ -131,6 +131,13 @@
                         <button type="button" onclick="saveProduct()">Salvar Produto</button>
                     </form>
                 </div>
+                <!-- Estrutura HTML do alerta personalizado -->
+                <div id="custom-alert" class="alert-container">
+                    <div class="alert-box">
+                        <span id="alert-message">Mensagem do alerta!</span>
+                        <button type="button" onclick="closeAlert()">OK</button>
+                    </div>
+                </div>
                 <div id="relatorio" class="section" style="display: none;">
                     <h2>Relatórios</h2>
                     <button onclick="showReportForm('clientes')">Relatório de Clientes</button>
@@ -173,71 +180,72 @@
             <section id="direitos-section" style="display: none;">
                 <h2>Direitos da ISAU</h2>
                 <label>
-                <p>
-                    A ISAU reserva todos os direitos sobre o conteúdo e funcionalidades deste sistema. Isso inclui, mas
-                    não se limita a:
-                </p>
-                <ul>
-                    <li>O direito de propriedade intelectual sobre todo o software e interfaces.</li>
-                    <li>O direito de uso e distribuição do sistema em ambientes comerciais e pessoais.</li>
-                    <li>O direito de proteção contra cópias ou usos indevidos do sistema sem autorização prévia.</li>
-                    <li>O direito de privacidade e proteção de dados conforme regulamentações internacionais.</li>
-                </ul>
-                <p>Para mais informações, entre em contato com nosso suporte jurídico.</p>
-            </label>
+                    <p>
+                        A ISAU reserva todos os direitos sobre o conteúdo e funcionalidades deste sistema. Isso inclui,
+                        mas
+                        não se limita a:
+                    </p>
+                    <ul>
+                        <li>O direito de propriedade intelectual sobre todo o software e interfaces.</li>
+                        <li>O direito de uso e distribuição do sistema em ambientes comerciais e pessoais.</li>
+                        <li>O direito de proteção contra cópias ou usos indevidos do sistema sem autorização prévia.
+                        </li>
+                        <li>O direito de privacidade e proteção de dados conforme regulamentações internacionais.</li>
+                    </ul>
+                    <p>Para mais informações, entre em contato com nosso suporte jurídico.</p>
+                </label>
                 <button onclick="voltarParaPrincipal()">Voltar</button>
             </section>
 
             <section id="sobrenos-section" style="display: none;">
                 <h2>Sobre a Empresa</h2>
                 <ul>
-                    <label><li>A <u>ISAU</u> oferece soluções completas de gestão de negócios, incluindo controle de
-                        vendas, gestão de estoques, fluxo de caixa e cadastros de clientes, produtos e fornecedores.
-                        Nosso sistema automatiza processos e gera relatórios em tempo real, facilitando a tomada de
-                        decisões e otimizando operações. Ideal para empresas que buscam eficiência e crescimento
-                        estratégico.</li>
+                    <label>
+                        <li>A <u>ISAU</u> oferece soluções completas de gestão de negócios, incluindo controle de
+                            vendas, gestão de estoques, fluxo de caixa e cadastros de clientes, produtos e fornecedores.
+                            Nosso sistema automatiza processos e gera relatórios em tempo real, facilitando a tomada de
+                            decisões e otimizando operações. Ideal para empresas que buscam eficiência e crescimento
+                            estratégico.</li>
                     </label>
                 </ul>
 
                 <h2>Contatos</h2>
                 <ul><label>
-                    <li><strong>Email:</strong> <a class="cor_email"><u>suporte.isau@gmail.com</u></a></li>
-                </label>
+                        <li><strong>Email:</strong> <a class="cor_email"><u>suporte.isau@gmail.com</u></a></li>
+                    </label>
                 </ul>
                 <br><label>mais informações em breve...</label>
                 <p><button onclick="voltarParaPrincipal()">Voltar</button></p>
             </section>
         </main>
         <div class="chat-toggle" id="chatToggle">
-            <img src="https://img.icons8.com/ios-glyphs/30/000000/chat--v1.png" alt="Chat Icon"> <!-- Ícone preto e branco -->
-          </div>
-          
-          <div class="chat-widget" id="chatWidget">
+            <img src="https://img.icons8.com/ios-glyphs/30/000000/chat--v1.png" alt="Chat Icon">
+            <!-- Ícone preto e branco -->
+        </div>
+
+        <div class="chat-widget" id="chatWidget">
             <div class="chat-header" id="chatHeader">
-              <h3>CHAT ISAU</h3>
-              <span class="close-btn" id="closeChat">&times;</span> <!-- Botão de fechamento -->
+                <h3>CHAT ISAU</h3>
+                <span class="close-btn" id="closeChat">&times;</span> <!-- Botão de fechamento -->
             </div>
             <div class="chat-body" id="chatBody">
-              <!-- Mensagens serão exibidas aqui -->
+                <!-- Mensagens serão exibidas aqui -->
             </div>
             <div class="chat-footer">
-              <input type="text" id="userMessage" placeholder="Digite sua mensagem...">
-              <button id="sendButton">Enviar</button>
+                <input type="text" id="userMessage" placeholder="Digite sua mensagem...">
+                <button id="sendButton">Enviar</button>
             </div>
-          </div>
-          
-          
-          
-          
-          
+        </div>
     </div>
 
     <footer>
         <p>&copy; 2024 Sistema de Gestão ISAU. <a href="#" onclick="mostrarDireitos()">Todos os direitos reservados</a>.
         </p>
     </footer>
-    
+
     <script src="script.js"></script>
+
+
 </body>
 
 </html>
