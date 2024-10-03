@@ -9,7 +9,7 @@ function clearForms() {
     // Seleciona todos os formulários da página
     const forms = document.querySelectorAll('form');
     
-    // Itera sobre todos os formulários e limpa seus inputs
+    // Itera sobre todos os formulários e limpa seus inputs                     
     forms.forEach((form) => {
         form.reset();
     });
@@ -469,8 +469,8 @@ document.getElementById('sendButton').addEventListener('click', function() {
         chatBody.appendChild(messageElement);
   
         // Enviar notificação via WhatsApp
-        var whatsappGroupLink = 'https://chat.whatsapp.com/C3d0jTs2ltJLUm71l27uew'; // Link do grupo do WhatsApp
-        var whatsappMessage = encodeURIComponent('Mensagem do site: ' + userMessage);
+        var whatsappGroupLink = 'https://tawk.to/chat/66fede7137379df10df15937/1i99p9rfj'; // Link do grupo do WhatsApp
+        var whatsappMessage = encodeURIComponent('ISAU: ' + userMessage);
         var whatsappUrl = whatsappGroupLink + '?text=' + whatsappMessage; // Usando o link do grupo
         window.open(whatsappUrl, '_blank');
   
