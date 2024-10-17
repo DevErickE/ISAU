@@ -503,8 +503,22 @@ closeChat.addEventListener('click', function() {
   chatToggle.style.display = 'flex'; // Exibe o ícone flutuante novamente
 });
 
+    // Função para mostrar o vídeo e ocultar o botão "clique aqui"
+    function mostrarVideo() {
+        document.getElementById("meuVideo").style.display = "block"; // Mostra o vídeo
+        document.getElementById("mostrarVideoBtn").style.display = "none"; // Esconde o botão "clique aqui"
+        document.getElementById("ocultarVideoBtn").style.display = "block"; // Mostra o botão "Ocultar vídeo"
+      }
 
-
+       // Função para ocultar o vídeo e mostrar o botão "clique aqui" novamente
+    function ocultarVideo() {
+        var video = document.getElementById("meuVideo");
+        video.pause(); // Pausa o vídeo se estiver tocando
+        video.currentTime = 0; // Volta o vídeo para o início
+        document.getElementById("meuVideo").style.display = "none"; // Esconde o vídeo
+        document.getElementById("ocultarVideoBtn").style.display = "none"; // Esconde o botão "Ocultar vídeo"
+        document.getElementById("mostrarVideoBtn").style.display = "block"; // Mostra o botão "clique aqui"
+      }
 // Atualiza o dropdown de produtos ao carregar a página
 document.addEventListener('DOMContentLoaded', updateProductDropdown);
 

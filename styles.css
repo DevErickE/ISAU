@@ -22,6 +22,24 @@ body {
     height: 106vh;
 }
 
+#mostrarVideoBtn, #ocultarVideoBtn {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  /* Esconde o vídeo inicialmente */
+  #meuVideo {
+    display: none;
+    margin: 20px auto;
+  }
 .mensagem_video {
     display: block;
     text-align: center; /* Centraliza o texto */

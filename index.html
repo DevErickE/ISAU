@@ -215,12 +215,13 @@
                     </label>
                 </ul>
                 <br><br>
-                <h3><label class="mensagem_video">Empresa ISAU: entenda um pouco mais sobre no video abaixo:</label></h3>
-                <br>
+                <h3 class="mensagem_video">Empresa ISAU: entenda um pouco mais sobre no video abaixo:</h3>
+                <button id="mostrarVideoBtn" onclick="mostrarVideo()">Clique aqui</button>
                 <video id="meuVideo" width="600" controls>
-                    <source src="videos\ISAUInovaonaSegurana.mp4" type="video/mp4">
+                    <source src="videos/ISAUInovaonaSegurana.mp4" type="video/mp4">
                     Seu navegador não suporta o elemento de vídeo.
                   </video>
+                  <button id="ocultarVideoBtn" style="display:none;" onclick="ocultarVideo()">Ocultar Vídeo</button>
                   <br>
                 <p><button onclick="voltarParaPrincipal()">Voltar</button></p>
             </section>
