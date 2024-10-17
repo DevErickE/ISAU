@@ -405,6 +405,9 @@ function voltarParaPrincipal() {
     document.getElementById('sobrenos-section').style.display = 'none';
     // Mostrar a seção de login
     document.getElementById('login-section').style.display = 'block';
+    var video = document.getElementById("meuVideo");
+    video.pause();  // Pausa o vídeo
+    video.currentTime = 0;  // Volta o vídeo para o início
 }
 
 // script.js

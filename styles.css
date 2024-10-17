@@ -22,6 +22,11 @@ body {
     height: 106vh;
 }
 
+.mensagem_video {
+    display: block;
+    text-align: center; /* Centraliza o texto */
+    margin-bottom: 20px; /* Espaço entre o texto e o vídeo */
+  }
 body::before {
     content: "";
     position: absolute;
@@ -34,6 +39,12 @@ body::before {
     
 }
 
+video {
+    display: block;
+    margin: 0 auto; /* Centraliza o vídeo horizontalmente */
+    border: 5px solid #000; /* Borda de 5px na cor preta */
+    border-radius: 10px; /* Canto arredondado da borda (opcional) */
+  }
 .password-container .toggle-password {
     position: absolute;
     right: 10px;
