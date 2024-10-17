@@ -519,6 +519,25 @@ closeChat.addEventListener('click', function() {
         document.getElementById("ocultarVideoBtn").style.display = "none"; // Esconde o botão "Ocultar vídeo"
         document.getElementById("mostrarVideoBtn").style.display = "block"; // Mostra o botão "clique aqui"
       }
+
+      document.addEventListener('keydown', function(event) {
+        var video = document.getElementById("meuVideo");
+  
+        // Verifica se a seta para a direita ou esquerda foi pressionada
+        if (event.key === 'ArrowRight') {
+          video.currentTime += 5; // Avança o vídeo em 5 segundos
+        } else if (event.key === 'ArrowLeft') {
+          video.currentTime -= 5; // Retrocede o vídeo em 5 segundos
+        } else if (event.key === ' ') {
+          event.preventDefault(); // Impede a página de rolar para baixo
+          // Se o espaço for pressionado, alterna entre pausar e reproduzir o vídeo
+          if (video.paused) {
+            video.play(); // Reproduz o vídeo
+          } else {
+            video.pause(); // Pausa o vídeo
+          }
+        }
+      });
 // Atualiza o dropdown de produtos ao carregar a página
 document.addEventListener('DOMContentLoaded', updateProductDropdown);
 
