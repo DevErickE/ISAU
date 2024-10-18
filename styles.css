@@ -24,7 +24,7 @@ body {
 
 .cadastrase, .sobre-nos {
     font-size: 18px;
-    color: #333;
+    color: rgb(255, 255, 255);
     margin-bottom: 20px; /* Espaço entre as mensagens */
 }
 
