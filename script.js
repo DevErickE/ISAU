@@ -395,8 +395,10 @@ function mostrarDireitos() {
     document.getElementById('login-section').style.display = 'none';
     document.getElementById('register-section').style.display = 'none';
     document.getElementById('main-section').style.display = 'none';
+    document.getElementById('sobrenos-section').style.display = 'none';
     // Exibir a seção de direitos
     document.getElementById('direitos-section').style.display = 'block';
+    document.getElementById("sobreNos").style.display = "none";
 }
 
 function showChat() {
