@@ -19,9 +19,11 @@ function clearForms() {
 function showLogin() {
     hideMessages();
     clearForms(); // Limpa os campos ao mudar para a tela de login
-    document.getElementById('login-section').style.display = 'block';
-    document.getElementById('register-section').style.display = 'none';
-    document.getElementById('main-section').style.display = 'none';
+    document.getElementById("login-section").style.display = "block"; // Mostra a seção de login
+    document.getElementById("sobreNos").style.display = "block"; // Mostra o texto "Sobre Nós" na tela de login
+    document.getElementById("register-section").style.display = "none"; // Esconde a seção de registro
+    document.getElementById("main-section").style.display = "none"; // Esconde a seção principal
+    document.getElementById("sobrenos-section").style.display = "none"; // Esconde a seção "Sobre Nós"
 }
 
 // Função para exibir a seção de registro
@@ -30,13 +32,17 @@ function showRegister() {
     hideMessages();
     document.getElementById('login-section').style.display = 'none';
     document.getElementById('register-section').style.display = 'block';
+    document.getElementById("sobreNos").style.display = "none"; // Esconde o texto "Sobre Nós"
+
 }
 function showEmpresa() {
     // Esconder todas as outras seções
     document.getElementById('login-section').style.display = 'none';
     document.getElementById('register-section').style.display = 'none';
     document.getElementById('main-section').style.display = 'none';
+    document.getElementById("sobreNos").style.display = "none"; // Esconde o texto "Sobre Nós"
     document.getElementById('sobrenos-section').style.display = 'block';
+    
 
 }
 //Fução para exibir o sobre a empresa
@@ -91,6 +97,8 @@ document.getElementById('login-form').addEventListener('submit', function (event
     event.preventDefault();
     const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
+    document.getElementById("sobreNos").style.display = "none"; // Esconde o texto "Sobre Nós"
+
     const user = users.find(u => u.username === username && u.password === password);
     
     if (user) {
@@ -403,6 +411,8 @@ function voltarParaPrincipal() {
     // Ocultar a seção de direitos
     document.getElementById('direitos-section').style.display = 'none';
     document.getElementById('sobrenos-section').style.display = 'none';
+    document.getElementById("sobreNos").style.display = "block"; // Esconde o texto "Sobre Nós"
+
     // Mostrar a seção de login
     document.getElementById('login-section').style.display = 'block';
     var video = document.getElementById("meuVideo");

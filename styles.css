@@ -22,6 +22,35 @@ body {
     height: 106vh;
 }
 
+.cadastrase, .sobre-nos {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px; /* Espaço entre as mensagens */
+}
+
+.cadastro-link {
+    font-weight: bold;
+    color: blue;
+    cursor: pointer;
+}
+
+.cadastro-link:hover {
+    text-decoration: underline;
+}
+
+.text {
+    text-align: center;
+}
+.sobre-nos {
+    font-weight: bold;
+    color: #0073e6;
+    cursor: pointer;
+    text-align: center;
+}
+
+.sobre-nos:hover {
+    text-decoration: underline;
+}
 #mostrarVideoBtn, #ocultarVideoBtn {
     display: block;
     margin: 0 auto;
