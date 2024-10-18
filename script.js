@@ -391,6 +391,7 @@ function logout() {
 }
 
 function mostrarDireitos() {
+    clearForms();
     // Esconder todas as outras seções
     document.getElementById('login-section').style.display = 'none';
     document.getElementById('register-section').style.display = 'none';
