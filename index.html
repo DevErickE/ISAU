@@ -81,17 +81,17 @@
 
             <div id="main-section" style="display: none;">
                 <nav>
-                    <button onclick="showSection('cadastro')">Cadastro</button>
-                    <button onclick="showSection('relatorio')">Relatórios</button>
-                    <button onclick="showSection('caixa')">Frente de Caixa</button>
-                    <button onclick="showSection('listar')">Listar</button>
+                    <button onclick="toggleSection('cadastro')">Cadastro</button>
+                    <button onclick="toggleSection('relatorio')">Relatórios</button>
+                    <button onclick="toggleSection('caixa')">Frente de Caixa</button>
+                    <button onclick="toggleSection('listar')">Listar</button>                    
                     <button onclick="logout()">Sair</button>
                 </nav>
                 <div id="cadastro" class="section" style="display: none;">
                     <h2>Cadastro</h2>
-                    <button onclick="showForm('cadastro-cliente')">Cadastrar Cliente</button>
-                    <button onclick="showForm('cadastro-fornecedor')">Cadastrar Fornecedor</button>
-                    <button onclick="showForm('cadastro-produto')">Cadastrar Produto</button>
+                    <button onclick="toggleForm('cadastro-cliente')">Cadastrar Cliente</button>
+                    <button onclick="toggleForm('cadastro-fornecedor')">Cadastrar Fornecedor</button>
+                    <button onclick="toggleForm('cadastro-produto')">Cadastrar Produto</button>
 
                     <form id="cadastro-cliente" class="form" style="display: none;">
                         <h3>Cadastrar Cliente</h3>
@@ -142,9 +142,9 @@
                 </div>
                 <div id="relatorio" class="section" style="display: none;">
                     <h2>Relatórios</h2>
-                    <button onclick="showReportForm('clientes')">Relatório de Clientes</button>
-                    <button onclick="showReportForm('produtos')">Relatório de Produtos</button>
-                    <button onclick="showReportForm('fornecedores')">Relatório de Fornecedores</button>
+                    <button onclick="toggleReportForm('clientes')">Relatório de Clientes</button>
+                    <button onclick="toggleReportForm('produtos')">Relatório de Produtos</button>
+                    <button onclick="toggleReportForm('fornecedores')">Relatório de Fornecedores</button>
                     <form id="report-clientes" class="report-form" style="display: none;">
                         <h3>Relatório de Clientes</h3>
                         <button type="button" onclick="generateReport('clientes')">Gerar Relatório</button>

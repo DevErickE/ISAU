@@ -46,11 +46,28 @@ function showEmpresa() {
 
 }
 //Fução para exibir o sobre a empresa
-function showSection(sectionId) {
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => section.style.display = 'none');
-    document.getElementById(sectionId).style.display = 'block';
+function toggleSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    const allSections = document.querySelectorAll('.section');
+    
+    // Esconde todas as seções, exceto a atual que será alternada
+    allSections.forEach(sec => {
+        if (sec.id !== sectionId) {
+            sec.style.display = 'none';  // Esconde as outras seções
+        }
+    });
+
+    // Alterna a seção clicada
+    if (section.style.display === 'none' || section.style.display === '') {
+        section.style.display = 'block';  // Mostra a seção
+    } else {
+        section.style.display = 'none';   // Esconde a seção
+    }
 }
+
+
+
+
 
 // Função para esconder as mensagens
 function hideMessages() {
@@ -76,11 +93,25 @@ function showSection(sectionId) {
 }
 
 // Função para mostrar um formulário específico
-function showForm(formId) {
-    const forms = document.querySelectorAll('.form');
-    forms.forEach(form => form.style.display = 'none');
-    document.getElementById(formId).style.display = 'block';
+function toggleForm(formId) {
+    const form = document.getElementById(formId);
+    const allForms = document.querySelectorAll('.form');
+    
+    // Esconde todos os outros formulários
+    allForms.forEach(f => {
+        if (f.id !== formId) {
+            f.style.display = 'none';  // Esconde os outros formulários
+        }
+    });
+
+    // Alterna a exibição do formulário clicado
+    if (form.style.display === 'none' || form.style.display === '') {
+        form.style.display = 'block';  // Mostra o formulário
+    } else {
+        form.style.display = 'none';   // Esconde o formulário
+    }
 }
+
 
 // Função para mostrar uma mensagem
 function showMessage(elementId, message, isError) {
@@ -379,13 +410,37 @@ function generateReport(type) {
 
 
 // Função para mostrar o formulário do relatório selecionado
-function showReportForm(type) {
-    document.querySelectorAll('.report-form').forEach(form => form.style.display = 'none');
-    document.getElementById(`report-${type}`).style.display = 'block';
+function toggleReportForm(reportId) {
+    const reportForm = document.getElementById(`report-${reportId}`);
+
+    // Verifica se o formulário de relatório está visível
+    if (reportForm.style.display === 'block') {
+        // Se estiver visível, oculta o formulário
+        reportForm.style.display = 'none';
+    } else {
+        // Caso contrário, oculta todos os formulários de relatório
+        const allReportForms = document.querySelectorAll('.report-form');
+        allReportForms.forEach(form => form.style.display = 'none');
+
+        // Exibe o formulário correspondente ao botão clicado
+        reportForm.style.display = 'block';
+    }
 }
+
 
 // Função para logout
 function logout() {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+        section.style.display = 'none'; // Oculta todas as seções
+    });
+
+    // Esconde todos os formulários (oculta todas as divs com a classe 'form')
+    const forms = document.querySelectorAll('.form');
+    forms.forEach(form => {
+        form.style.display = 'none'; // Oculta todos os formulários
+    });
+
     document.getElementById('main-section').style.display = 'none';
     showLogin();
 }
