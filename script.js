@@ -579,33 +579,34 @@ closeChat.addEventListener('click', function() {
       }
 
        // Função para ocultar o vídeo e mostrar o botão "clique aqui" novamente
-    function ocultarVideo() {
+       function ocultarVideo() {
         var video = document.getElementById("meuVideo");
         video.pause(); // Pausa o vídeo se estiver tocando
         video.currentTime = 0; // Volta o vídeo para o início
-        document.getElementById("meuVideo").style.display = "none"; // Esconde o vídeo
+        video.style.display = "none"; // Esconde o vídeo
         document.getElementById("ocultarVideoBtn").style.display = "none"; // Esconde o botão "Ocultar vídeo"
-        document.getElementById("mostrarVideoBtn").style.display = "block"; // Mostra o botão "clique aqui"
-      }
-
-      document.addEventListener('keydown', function(event) {
-        var video = document.getElementById("meuVideo");
-  
-        // Verifica se a seta para a direita ou esquerda foi pressionada
-        if (event.key === 'ArrowRight') {
-          video.currentTime += 5; // Avança o vídeo em 5 segundos
-        } else if (event.key === 'ArrowLeft') {
-          video.currentTime -= 5; // Retrocede o vídeo em 5 segundos
-        } else if (event.key === ' ') {
-          event.preventDefault(); // Impede a página de rolar para baixo
-          // Se o espaço for pressionado, alterna entre pausar e reproduzir o vídeo
-          if (video.paused) {
-            video.play(); // Reproduz o vídeo
-          } else {
-            video.pause(); // Pausa o vídeo
-          }
+        document.getElementById("mostrarVideoBtn").style.display = "block"; // Mostra o botão "Mostrar vídeo"
+    }
+    
+    // Função para verificar se um elemento está visível no viewport
+    function isElementVisible(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+    
+    document.addEventListener('keydown', function(event) {
+        // Verifica se a tecla pressionada é o espaço
+        if (event.key === ' ') {
+            event.preventDefault(); // Impede a página de rolar para baixo
         }
-      });
+    });
+    
+    
 // Atualiza o dropdown de produtos ao carregar a página
 document.addEventListener('DOMContentLoaded', updateProductDropdown);
 
