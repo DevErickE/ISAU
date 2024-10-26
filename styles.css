@@ -9,7 +9,6 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #f4f4f4;
-    
 }
 
 body {
@@ -19,7 +18,12 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     margin: 0;
-    height: 106vh;
+    height: 111vh;
+}
+@keyframes backgroundColorChange {
+    0% { background: linear-gradient(to right, #ff758c, #ff7eb3); }
+    50% { background: linear-gradient(to right, #6a82fb, #fc5c7d); }
+    100% { background: linear-gradient(to right, #4e54c8, #8f94fb); }
 }
 
 .cadastrase, .sobre-nos {
@@ -30,8 +34,9 @@ body {
 
 .cadastro-link {
     font-weight: bold;
-    color: blue;
+    color: rgb(94, 254, 54);
     cursor: pointer;
+    
 }
 
 .cadastro-link:hover {
@@ -63,6 +68,8 @@ body {
     font-size: 16px;
     text-align: center;
     transition: background-color 0.3s ease; /* Transição suave */
+    animation: backgroundColorChange 0.6s infinite alternate;
+    font-weight: bold;
   }
   
   #mostrarVideoBtn:hover, #ocultarVideoBtn:hover {
