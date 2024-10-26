@@ -9,9 +9,6 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #f4f4f4;
-}
-
-body {
     position: relative;
     background-image: url('https://img.freepik.com/fotos-gratis/celeiros-e-silos-brancos-cercados-por-uma-vegetacao-verdejante_493961-661.jpg');
     background-size: cover;
@@ -20,6 +17,8 @@ body {
     margin: 0;
     height: 111vh;
 }
+
+
 @keyframes backgroundColorChange {
     0% { background: linear-gradient(to right, #ff758c, #ff7eb3); }
     50% { background: linear-gradient(to right, #6a82fb, #fc5c7d); }
