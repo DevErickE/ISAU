@@ -765,6 +765,46 @@ body {
     animation: alert-fade-in 0.4s ease-out; /* Animação ao aparecer */
 }
 
+#descricao-cadastro {
+
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 900px;
+    margin: 30px auto;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#descricao-cadastro:hover {
+    transform: translateY(-5px); /* Leve elevação ao passar o mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra mais intensa ao passar o mouse */
+}
+
+#descricao-cadastro h2 {
+    color: #ffffff; /* Cinza bem escuro para o título */
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+#descricao-cadastro p {
+    color: #ffffff; /* Cinza escuro para o texto */
+    font-size: 18px;
+    line-height: 1.7;
+    letter-spacing: 0.5px;
+}
+
+
+
+#descricao-cadastro p a {
+    color: #555; /* Cinza escuro para links */
+    text-decoration: none;
+}
+
+#descricao-cadastro p a:hover {
+    color: #000; /* Cor mais escura para links ao passar o mouse */
+    text-decoration: underline; /* Sublinhado ao passar o mouse sobre links */
+}
 
   
   

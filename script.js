@@ -49,19 +49,26 @@ function showEmpresa() {
 function toggleSection(sectionId) {
     const section = document.getElementById(sectionId);
     const allSections = document.querySelectorAll('.section');
-    
-    // Esconde todas as seções, exceto a atual que será alternada
-    allSections.forEach(sec => {
-        if (sec.id !== sectionId) {
-            sec.style.display = 'none';  // Esconde as outras seções
-        }
-    });
+    const descricaoCadastro = document.getElementById("descricao-cadastro");
 
-    // Alterna a seção clicada
-    if (section.style.display === 'none' || section.style.display === '') {
-        section.style.display = 'block';  // Mostra a seção
+    // Verifica se a seção clicada está oculta
+    const isHidden = section.style.display === 'none' || section.style.display === '';
+
+    // Esconde todas as seções
+    allSections.forEach(sec => sec.style.display = 'none');
+
+    // Mostra ou oculta a seção clicada
+    if (isHidden) {
+        section.style.display = 'block';  // Mostra a seção selecionada
+        descricaoCadastro.style.display = 'none';  // Esconde a descrição
     } else {
-        section.style.display = 'none';   // Esconde a seção
+        section.style.display = 'none';  // Oculta a seção clicada
+    }
+
+    // Verifica se todas as seções estão ocultas; se sim, exibe a descrição
+    const allHidden = Array.from(allSections).every(sec => sec.style.display === 'none');
+    if (allHidden) {
+        descricaoCadastro.style.display = 'block';
     }
 }
 
