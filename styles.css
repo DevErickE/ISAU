@@ -577,7 +577,7 @@ body {
 
 .carregando-sistema { 
     color: #f3f3f3;
-    margin-left: 20px; /* Move o elemento 20px para a direita */
+    margin-left: 12px; /* Move o elemento 20px para a direita */
 }
 
 /* Estilo do conteúdo principal (oculto inicialmente) */
