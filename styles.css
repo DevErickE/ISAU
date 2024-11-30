@@ -194,11 +194,11 @@ label {
 input[type="text"], input[type="password"], input[type="number"], input[type="date"], select {
     padding: 0.75rem;
     margin-bottom: 1rem;
-    border: 1px solid #34495e; /* Bordas escuras para inputs */
+    border: 1px solid #e1e2e3; /* Bordas escuras para inputs */
     border-radius: 4px;
     font-size: 1rem;
     background-color: #34495e; /* Fundo escuro para inputs */
-    color: #ecf0f1; /* Texto claro dentro dos inputs */
+    color: #e1e2e3; /* Texto claro dentro dos inputs */
     
 }
 
@@ -430,7 +430,7 @@ select {
     width: 100%;
     padding: 10px;
     margin: 5px 0 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #838181;
     border-radius: 5px;
 }
 
