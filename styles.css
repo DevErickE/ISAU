@@ -250,11 +250,15 @@ nav button:hover {
 
 .report-form, #venda-form {
     background-color: #2c3e50;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(222, 220, 220, 0.3);
+    border-radius: 8px; /* Mantém as bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra ajustada para parecer mais abaixo */
     padding: 1.5rem;
     margin-bottom: 1.5rem;
+    border: 1px solid #384f66; /* Borda definida */
+    margin-top: 20px; /* Move o elemento 20px para baixo */
 }
+
+
 
 /* Lista de resultados */
 #listar-results {
@@ -412,14 +416,6 @@ footer p {
     background-color: #1abc9c;
 }
 
-/* Estilo para relatórios */
-.report-form {
-    background: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    margin-bottom: 20px;
-}
 
 label {
     display: block;
