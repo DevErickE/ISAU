@@ -447,7 +447,7 @@ function logout() {
     forms.forEach(form => {
         form.style.display = 'none'; // Oculta todos os formulários
     });
-
+    document.getElementById('descricao-cadastro').style.display = 'block';
     document.getElementById('main-section').style.display = 'none';
     showLogin();
 }
